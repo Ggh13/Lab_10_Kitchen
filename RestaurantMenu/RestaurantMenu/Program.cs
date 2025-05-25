@@ -1,3 +1,6 @@
+using Model;
+using Model.Data;
+
 namespace RestaurantMenu
 {
     internal static class Program
@@ -13,6 +16,7 @@ namespace RestaurantMenu
             ApplicationConfiguration.Initialize();
             Console.WriteLine("Mambo Italiaaaano");
             Application.Run(new Form1());
+            JsonSerializer.BLABLA();
         }
     }
 }
