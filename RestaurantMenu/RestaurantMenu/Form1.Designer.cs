@@ -1,4 +1,4 @@
-﻿namespace Lab_10_Kitchen
+﻿namespace RestaurantMenu
 {
     partial class Form1
     {

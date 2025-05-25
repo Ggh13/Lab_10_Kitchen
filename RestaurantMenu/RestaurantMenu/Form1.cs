@@ -1,4 +1,4 @@
-namespace Lab_10_Kitchen
+namespace RestaurantMenu
 {
     public partial class Form1 : Form
     {

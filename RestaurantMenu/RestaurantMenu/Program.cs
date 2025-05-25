@@ -1,4 +1,4 @@
-namespace Lab_10_Kitchen
+namespace RestaurantMenu
 {
     internal static class Program
     {
@@ -11,9 +11,8 @@ namespace Lab_10_Kitchen
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Console.WriteLine("DJKWKNWD");
+            Console.WriteLine("Mambo Italiaaaano");
             Application.Run(new Form1());
-            
         }
     }
 }
