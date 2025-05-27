@@ -27,12 +27,27 @@ namespace Model.Core.MenuDir
             return Meals;
         }
         public void CloseMenu() { }
-        public void AddMeal(Meal meal) {
-            Array.Resize(ref _meals, _meals.Length + 1);
-            _meals[_meals.Length - 1] = meal;
-        }
+        //public void AddMeal(Meal meal) {
+        //    Array.Resize(ref _meals, _meals.Length + 1);
+        //    _meals[_meals.Length - 1] = meal;
+        //}
         public void DeleteMeal(Meal meal) {
             _meals = _meals.Where(m => m != meal).ToArray();
+        }
+
+        public static Menu operator +(Menu menu, Meal meal)
+        {
+            Meal[] updatedMeals = new Meal[menu._meals.Length + 1];
+            Array.Copy(menu._meals, updatedMeals, menu._meals.Length);
+            updatedMeals[updatedMeals.Length - 1] = meal;
+
+            menu._meals = updatedMeals;
+            return menu; 
+        }
+
+        public void AddMeal(Meal meal)
+        {
+            var _ = this + meal;
         }
 
     }

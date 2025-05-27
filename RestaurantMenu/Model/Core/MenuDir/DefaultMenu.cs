@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestaurantMenu.MenuDir
+namespace Model.Core.MenuDir
 {
     public class DefaultMenu : Menu
     {
