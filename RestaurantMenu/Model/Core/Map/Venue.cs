@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model.Core.Map
 {
-    public abstract class Venue : IVenue
+    public  abstract partial class Venue : IVenue
     {
         protected string _name;
         protected string _description;
@@ -16,10 +16,19 @@ namespace Model.Core.Map
 
         //private Menu[]
 
-        public Venue(string name,string description)
+       
+    }
+
+     public abstract partial class Venue : IVenue
+    {
+
+        //private Menu[]
+
+        public Venue(string name, string description)
         {
             _name = name;
             _description = description;
         }
     }
+
 }

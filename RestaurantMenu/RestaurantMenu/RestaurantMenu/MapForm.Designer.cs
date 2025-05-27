@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MapForm));
             button1 = new Button();
             MainPanel = new Panel();
             ButtonFastFood2 = new Button();
@@ -42,8 +43,10 @@
             RestaurantCheckBox = new CheckBox();
             CloseButton = new Label();
             label1 = new Label();
+            pictureBox1 = new PictureBox();
             MainPanel.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // button1
@@ -59,6 +62,7 @@
             // MainPanel
             // 
             MainPanel.BackColor = SystemColors.MenuHighlight;
+            MainPanel.Controls.Add(pictureBox1);
             MainPanel.Controls.Add(ButtonFastFood2);
             MainPanel.Controls.Add(ButtonFastFood1);
             MainPanel.Controls.Add(ButtonCafe2);
@@ -197,6 +201,17 @@
             label1.TabIndex = 1;
             label1.Text = "label1";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.ErrorImage = (Image)resources.GetObject("pictureBox1.ErrorImage");
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
+            pictureBox1.Location = new Point(44, 125);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(200, 119);
+            pictureBox1.TabIndex = 7;
+            pictureBox1.TabStop = false;
+            // 
             // MapForm
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
@@ -210,6 +225,7 @@
             MainPanel.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -229,5 +245,6 @@
         private Button ButtonFastFood1;
         private CheckBox FastFoodCheckBox;
         private CheckBox CafeCheckBox;
+        private PictureBox pictureBox1;
     }
 }
