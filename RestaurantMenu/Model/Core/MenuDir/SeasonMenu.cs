@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestaurantMenu.Menu
+namespace Model.Core.MenuDir
 {
-    internal interface IMenu
+    public class SeasonMenu : Menu
     {
+        public SeasonMenu() : base() { }
     }
 }
