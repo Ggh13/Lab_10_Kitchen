@@ -37,9 +37,5 @@ namespace Model.Core.MealDir
             }
         }
 
-        //public override string ToString()
-        //{
-        //    return base.ToString();
-        //}
     }
 }
