@@ -27,10 +27,7 @@ namespace Model.Core.MenuDir
             return Meals;
         }
         public void CloseMenu() { }
-        //public void AddMeal(Meal meal) {
-        //    Array.Resize(ref _meals, _meals.Length + 1);
-        //    _meals[_meals.Length - 1] = meal;
-        //}
+
         public void DeleteMeal(Meal meal) {
             _meals = _meals.Where(m => m != meal).ToArray();
         }
