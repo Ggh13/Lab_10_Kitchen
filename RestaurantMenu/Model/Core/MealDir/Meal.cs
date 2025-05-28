@@ -32,5 +32,10 @@ namespace Model.Core.MealDir
             }
         }
 
+        public override string ToString()
+        {
+            return $"{Name}, {Price} рублей";
+        }
+
     }
 }
