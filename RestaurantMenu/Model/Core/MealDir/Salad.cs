@@ -8,6 +8,6 @@ namespace Model.Core.MealDir
 {
     public class Salad : Meal
     {
-        public Salad(string name, int price, string description) : base(name, price, description) { }
+        public Salad(string name, int price) : base(name, price) { }
     }
 }
