@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Model.Data
 {
+
     internal class XMLSerializer
     {
     }
+
 }
