@@ -28,5 +28,8 @@ namespace Model.Core.MenuDir
         }
         public void CloseMenu() { }
 
+        public override string ToString() {
+            return Type;
+        }
     }
 }
