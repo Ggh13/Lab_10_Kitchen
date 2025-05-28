@@ -10,7 +10,6 @@ namespace Model.Core.MealDir
     {
         void SetPrice(int price) ;
         void SetName(string name) ;
-        void SetDescription(string desc) ;
         string Type { get; }
     }
 }

@@ -7,6 +7,6 @@ namespace Model.Core.MealDir
 {
     public class HotDish : Meal
     {
-        public HotDish(string name, int price, string description) : base(name, price, description) {}
+        public HotDish(string name, int price) : base(name, price) {}
     }
 }
