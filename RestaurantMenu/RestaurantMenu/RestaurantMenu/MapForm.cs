@@ -96,6 +96,7 @@ namespace RestaurantMenu.RestaurantMenu
                 AddSeasonMenu.Visible = true;
             }
         }
+
         private void CloseButton_Click(object sender, EventArgs e)
         {
             this.Close();
