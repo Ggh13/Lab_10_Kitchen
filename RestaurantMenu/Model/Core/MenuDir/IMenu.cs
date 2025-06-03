@@ -13,6 +13,8 @@ namespace Model.Core.MenuDir
         void CloseMenu();
         void AddMeal(Meal meal) ;
         void DeleteMeal(Meal meal) ;
+        void SaveMenu();
+        void LoadMenu();
 
         Meal[] Meals { get; }
         string Type { get; }

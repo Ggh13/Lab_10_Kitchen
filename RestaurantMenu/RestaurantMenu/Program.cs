@@ -4,6 +4,8 @@ using Model.Core;
 using Model.Core.Map;
 using RestaurantMenu;
 using RestaurantMenu.RestaurantMenu;
+using Model.Core.MenuDir;
+using Model.Core.MealDir;
 
 namespace RestaurantMenu
 {
@@ -24,6 +26,15 @@ namespace RestaurantMenu
             var cafe = new Model.Core.Map.Cafe("The Krusty Krab", "There are many krab`s burgers");
             Model.Core.Map.Map.AddVenue(cafe);
 
+            
+            var menu = new SeasonMenu();
+            
+            Meal meal1 = new Salad("buabes", 100);
+            
+            menu.AddMeal(meal1);
+            /*
+            menu.AddMeal(meal1);
+            */
             MapForm mf = new RestaurantMenu.MapForm();
             Application.Run(mf);
         }
