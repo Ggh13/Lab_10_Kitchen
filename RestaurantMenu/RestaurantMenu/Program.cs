@@ -45,7 +45,7 @@ namespace RestaurantMenu
 
             
 
-            MessageBox.Show(JsonSerDesir());
+            MessageBox.Show(xml());
 
 
 
@@ -77,7 +77,7 @@ namespace RestaurantMenu
             return "allDone";
         }
 
-        public static void xml()
+        public static string xml()
         {
             SeasonMenu menu = new SeasonMenu();
 
@@ -91,7 +91,7 @@ namespace RestaurantMenu
             menu.AddMeal(meal1);
             menu.AddMeal(meal1);
             XMLSerializer.SerializeMenu(menu, Path.Combine(Serializer.pathFolder, menu.Id.ToString() + ".xml"));
-
+            return "All Done";
         }
     }
 }
