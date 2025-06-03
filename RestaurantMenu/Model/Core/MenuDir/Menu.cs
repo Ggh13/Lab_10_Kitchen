@@ -10,10 +10,12 @@ namespace Model.Core.MenuDir
 {
     public abstract partial class Menu : IMenu
     {
+
         protected static int id = 0;
         public int Id { get { return id; } }
         [JsonConstructor]
         public Menu() {
+
             _meals = new Meal[0];
         }
 

@@ -21,6 +21,7 @@ namespace RestaurantMenu
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
+
             
             var rest = new Model.Core.Map.Restaurant("Clot Mone", "Oguzk chef?!?!?! NO WAY!");
             Model.Core.Map.Map.AddVenue(rest);
@@ -91,6 +92,7 @@ namespace RestaurantMenu
             menu.AddMeal(meal1);
             menu.AddMeal(meal1);
             XMLSerializer.SerializeMenu(menu, Path.Combine(Serializer.pathFolder, menu.Id.ToString() + ".xml"));
+
 
         }
     }
