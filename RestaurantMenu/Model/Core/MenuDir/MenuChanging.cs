@@ -17,7 +17,6 @@ namespace Model.Core.MenuDir
 
         public static Menu operator +(Menu menu, Menu meal)
         {
-            Console.WriteLine("CW CW CW CW");
 
             Meal[] updatedMeals = new Meal[menu.Meals.Length + 1];
             Array.Copy(menu._meals, updatedMeals, menu._meals.Length);
@@ -29,7 +28,7 @@ namespace Model.Core.MenuDir
 
         public void AddMeal(Meal meal)
         {
-            Console.WriteLine("11");
+
             Menu tempM = new DefaultMenu();
             tempM._meals = new Meal[1] { meal };
             var _ = (this + tempM);
