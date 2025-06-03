@@ -6,6 +6,7 @@ using RestaurantMenu;
 using RestaurantMenu.RestaurantMenu;
 using Model.Core.MenuDir;
 using Model.Core.MealDir;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace RestaurantMenu
 {
@@ -39,17 +40,58 @@ namespace RestaurantMenu
             var FF2 = new Model.Core.Map.FastFood("The Krusty Krab", "There are many krab`s burgers");
             Model.Core.Map.Map.AddVenue(FF2);
 
-            /*
-            var menu = new SeasonMenu();
+
+
+
             
-            Meal meal1 = new Salad("buabes", 100);
-            
-            menu.AddMeal(meal1);
-            
-            menu.AddMeal(meal1);
-            */
+
+            MessageBox.Show(JsonSerDesir());
+
+
+
+
             MapForm mf = new RestaurantMenu.MapForm();
             Application.Run(mf);
+        }
+
+        public static string JsonSerDesir()
+        {
+            Serializer sir = new JsonSerializer();
+
+
+            SeasonMenu menu = new SeasonMenu();
+
+            Meal meal1 = new Salad("buabes", 100);
+            Console.WriteLine("!!!!!22------");
+            menu.AddMeal(meal1);
+
+            sir.Serialize(menu);
+
+
+            var ans = sir.Deserialize<Model.Core.MenuDir.Menu>(1);
+            if(ans == null)
+            {
+                return "?";
+            }
+            sir.Serialize(ans);
+            return "allDone";
+        }
+
+        public static void xml()
+        {
+            SeasonMenu menu = new SeasonMenu();
+
+            Meal meal1 = new Salad("buabes", 100);
+            Console.WriteLine("!!!!!22------");
+            menu.AddMeal(meal1);
+
+            XMLSerializer.SerializeMenu(menu, Path.Combine(Serializer.pathFolder, menu.Id.ToString() + ".xml"));
+            var men = (Model.Core.MenuDir.Menu)XMLSerializer.DeserializeMenu(Path.Combine(Serializer.pathFolder, menu.Id.ToString() + ".xml"));
+            men.AddMeal(meal1);
+            menu.AddMeal(meal1);
+            menu.AddMeal(meal1);
+            XMLSerializer.SerializeMenu(menu, Path.Combine(Serializer.pathFolder, menu.Id.ToString() + ".xml"));
+
         }
     }
 }

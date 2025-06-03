@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.Core.MenuDir;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,6 @@ namespace Model.Data
        
        public void Serialize<T>(T data);
 
-        public T Deserialize<T>(int id);
+        public T Deserialize<T>(int id) where T : Menu;
     }
 }

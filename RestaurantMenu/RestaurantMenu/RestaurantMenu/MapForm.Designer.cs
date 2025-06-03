@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MapForm));
             button1 = new Button();
             MainPanel = new Panel();
+            AddSeasonMenu = new Button();
             SeasonMenuButton = new Button();
             flowLayoutPanel1 = new FlowLayoutPanel();
             ButtonFastFood2 = new Button();
@@ -63,6 +64,7 @@
             // MainPanel
             // 
             MainPanel.BackColor = SystemColors.MenuHighlight;
+            MainPanel.Controls.Add(AddSeasonMenu);
             MainPanel.Controls.Add(SeasonMenuButton);
             MainPanel.Controls.Add(flowLayoutPanel1);
             MainPanel.Controls.Add(label1);
@@ -77,11 +79,21 @@
             MainPanel.MouseDown += MainPanel_MouseDown;
             MainPanel.MouseMove += MainPanel_MouseMove;
             // 
+            // AddSeasonMenu
+            // 
+            AddSeasonMenu.Location = new Point(532, 577);
+            AddSeasonMenu.Name = "AddSeasonMenu";
+            AddSeasonMenu.Size = new Size(341, 46);
+            AddSeasonMenu.TabIndex = 10;
+            AddSeasonMenu.Text = "Добавить сезонное меню";
+            AddSeasonMenu.UseVisualStyleBackColor = true;
+            AddSeasonMenu.Click += AddSeasonMenu_Click;
+            // 
             // SeasonMenuButton
             // 
-            SeasonMenuButton.Location = new Point(614, 224);
+            SeasonMenuButton.Location = new Point(603, 224);
             SeasonMenuButton.Name = "SeasonMenuButton";
-            SeasonMenuButton.Size = new Size(205, 96);
+            SeasonMenuButton.Size = new Size(228, 108);
             SeasonMenuButton.TabIndex = 9;
             SeasonMenuButton.Text = "Season";
             SeasonMenuButton.UseVisualStyleBackColor = true;
@@ -253,5 +265,6 @@
         private Button SeasonMenuButton;
         private ComboBox chooseMenu;
         private Button ClassicMenuButton;
+        private Button AddSeasonMenu;
     }
 }

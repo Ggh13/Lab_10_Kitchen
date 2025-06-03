@@ -15,19 +15,24 @@ namespace Model.Core.MenuDir
             _meals = _meals.Where(m => m != meal).ToArray();
         }
 
-        public static Menu operator +(Menu menu, Meal meal)
+        public static Menu operator +(Menu menu, Menu meal)
         {
-            Meal[] updatedMeals = new Meal[menu._meals.Length + 1];
-            Array.Copy(menu._meals, updatedMeals, menu._meals.Length);
-            updatedMeals[updatedMeals.Length - 1] = meal;
+            Console.WriteLine("CW CW CW CW");
 
-            menu._meals = updatedMeals;
+            Meal[] updatedMeals = new Meal[menu.Meals.Length + 1];
+            Array.Copy(menu._meals, updatedMeals, menu._meals.Length);
+            updatedMeals[updatedMeals.Length - 1] = meal.Meals[0];
+
+           menu._meals = updatedMeals;
             return menu;
         }
 
         public void AddMeal(Meal meal)
         {
-            var _ = this + meal;
+            Console.WriteLine("11");
+            Menu tempM = new DefaultMenu();
+            tempM._meals = new Meal[1] { meal };
+            var _ = (this + tempM);
         }
     }
 }

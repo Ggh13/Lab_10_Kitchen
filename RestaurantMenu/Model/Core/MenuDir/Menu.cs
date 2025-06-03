@@ -5,13 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using Model.Core.MealDir;
 using Model.Data;
+using Newtonsoft.Json;
 namespace Model.Core.MenuDir
 {
     public abstract partial class Menu : IMenu
     {
         protected static int id = 0;
         public int Id { get { return id; } }
-        public Menu() { }
+        [JsonConstructor]
+        public Menu() {
+            _meals = new Meal[0];
+        }
 
         private Meal[] _meals;
 

@@ -47,13 +47,15 @@ namespace RestaurantMenu.RestaurantMenu
 
             for (int i = 0; i < 6; i++)
             {
-                VenueButtons[i].Text = Map.Venues[i].Name; 
+                VenueButtons[i].Text = Map.Venues[i].Name;
                 VenueButtons[i].Size = new Size(420, 200);
             }
 
-
+            ClassicMenuButton.Visible = false;
+            SeasonMenuButton.Visible = false;
             label1.Text = "Aboba";
 
+            AddSeasonMenu.Visible = false;
 
             comboRestaurant.DropDownStyle = ComboBoxStyle.DropDownList;
 
@@ -82,13 +84,16 @@ namespace RestaurantMenu.RestaurantMenu
             SeasonMenuButton.Visible = false;
             chooseMenu.Items.Clear();
             choosenVen = RestToId[msg];
+            AddSeasonMenu.Visible = false;
             if (Map.Venues[RestToId[msg]].HaveSeasonMenu)
             {
                 chooseMenu.Items.AddRange(new string[] { "Сезонное", "Классическое" });
+
             }
             else
             {
                 chooseMenu.Items.AddRange(new string[] { "Классическое" });
+                AddSeasonMenu.Visible = true;
             }
         }
         private void CloseButton_Click(object sender, EventArgs e)
@@ -200,6 +205,21 @@ namespace RestaurantMenu.RestaurantMenu
         private void SeasonMenuButton_Click(object sender, EventArgs e)
         {
             Map.Venues[choosenVen].Menus[1].OpenMenu();
+        }
+
+        private void AddSeasonMenu_Click(object sender, EventArgs e)
+        {
+            //Map.Venues[choosenVen].HaveSeasonMenu = true;
+            MessageBox.Show("Сезонное меню успешно добавлено".ToString());
+
+
+            Map.Venues[choosenVen].AddSeasonMenu();
+            //MessageBox.Show("Текст сообщения", "Заголовок", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            AddSeasonMenu.Visible = false;
+            chooseMenu.Items.AddRange(new string[] { "Сезонное"});
+
+
         }
     }
 }
