@@ -28,7 +28,6 @@ namespace RestaurantMenu
 
         private void InitializeComponents()
         {
-            // Настройка формы
             this.Text = "Добавить блюдо";
             this.Size = new Size(400, 250);
 
