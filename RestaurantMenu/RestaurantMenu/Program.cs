@@ -22,9 +22,12 @@ namespace RestaurantMenu
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            
+            //DefaultMenu menu = new DefaultMenu();
+
             var rest = new Model.Core.Map.Restaurant("Clot Mone", "Oguzk chef?!?!?! NO WAY!");
             Model.Core.Map.Map.AddVenue(rest);
+            
+            
 
             var cafe = new Model.Core.Map.Cafe("The Krusty Krab", "There are many krab`s burgers");
             Model.Core.Map.Map.AddVenue(cafe);
@@ -46,7 +49,7 @@ namespace RestaurantMenu
 
             
 
-            MessageBox.Show(xml());
+            //MessageBox.Show(xml());
 
 
 
