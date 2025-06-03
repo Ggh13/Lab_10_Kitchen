@@ -13,8 +13,8 @@ namespace Model.Data
     public class XMLSerializer : Serializer
     {
         public T Deserialize<T>(string path)
-        {
-            var file_path = Path.Combine(PathFolder, menu.Id.ToString() + ".json");
+        {/*
+            var file_path = Path.Combine(PathFolder, pa .Id.ToString() + ".json");
             Menu res;
             var sir = new XmlSerializer(typeof(Menu));
             Menu desir;
@@ -24,6 +24,8 @@ namespace Model.Data
             }
             if (res is T result)
                 return result;
+            return default(T);
+            */
             return default(T);
         }
 

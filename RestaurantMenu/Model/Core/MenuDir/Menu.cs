@@ -36,8 +36,8 @@ namespace Model.Core.MenuDir
 
         public void SaveMenu()
         {
-            JsonSerializer serializer = new JsonSerializer();
-            serializer.Serialize(this);
+          //  JsonSerializer serializer = new JsonSerializer();
+            //serializer.Serialize(this);
         }
         public void LoadMenu()
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Model.Data
 {
@@ -17,7 +18,17 @@ namespace Model.Data
 
         public void Serialize<T>(T data)
         {
-            throw new NotImplementedException();
+    /*
+            var file_path = Path.Combine(PathFolder, data.Id.ToString() + ".json");
+            SelectFile(fileName);
+            WaterJumpSeril res = new WaterJumpSeril(participant);
+            var sir = new XmlSerializer(typeof(WaterJumpSeril));
+            using (var writer = new StreamWriter(FilePath))
+            {
+                sir.Serialize(writer, res);
+            }
+    */
+
         }
     }
 }

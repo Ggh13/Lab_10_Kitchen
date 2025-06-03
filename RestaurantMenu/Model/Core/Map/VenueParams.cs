@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.Core.MenuDir;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,11 @@ namespace Model.Core.Map
         public string Name => _name;
         public string Description => _description;
 
-        //private Menu[]
+        public bool HaveSeasonMenu => haveSeasonMenu;
+        protected bool haveSeasonMenu = false;
+
+        public Menu[] Menus => _menus;
+        private Menu[] _menus;
 
 
     }
