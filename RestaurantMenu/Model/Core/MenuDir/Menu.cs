@@ -9,7 +9,10 @@ namespace Model.Core.MenuDir
 {
     public abstract partial class Menu : IMenu
     {
-        public Menu() { }
+        public Menu()
+        {
+            _meals = new Meal[0];
+        }
 
         private Meal[] _meals;
 

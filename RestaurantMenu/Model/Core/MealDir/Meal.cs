@@ -8,8 +8,8 @@ namespace Model.Core.MealDir
 {
     public abstract class Meal : IMeal
     {
-        protected string Name { get; set; }
-        protected int Price { get; set; }
+        public string Name { get; protected set; }
+        public int Price { get; protected set; }
 
         public void SetPrice(int price) { 
             Price = price;

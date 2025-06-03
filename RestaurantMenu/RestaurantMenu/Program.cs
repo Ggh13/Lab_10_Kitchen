@@ -15,7 +15,7 @@ namespace RestaurantMenu
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Console.WriteLine("Mambo Italiaaaano");
-            Application.Run(new Form1());
+            Application.Run(new VenueForm());
             JsonSerializer.BLABLA();
         }
     }
