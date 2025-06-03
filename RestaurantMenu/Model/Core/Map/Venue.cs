@@ -20,6 +20,7 @@ namespace Model.Core.Map
             _name = name;
             _description = description;
             _menus = new Menu[1];
+            _menus[0] = new DefaultMenu();
         }
 
         public void AddSeasonMenu()
