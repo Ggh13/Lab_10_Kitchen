@@ -200,12 +200,14 @@ namespace RestaurantMenu.RestaurantMenu
 
         private void ClassicMenuButton_Click(object sender, EventArgs e)
         {
-            Map.Venues[choosenVen].Menus[0].OpenMenu();
+            VenueForm venueForm = new VenueForm(Map.Venues[choosenVen].Menus[0].Id);
+            venueForm.Show();
         }
 
         private void SeasonMenuButton_Click(object sender, EventArgs e)
         {
-            Map.Venues[choosenVen].Menus[1].OpenMenu();
+            VenueForm venueForm = new VenueForm(Map.Venues[choosenVen].Menus[1].Id);
+            venueForm.Show();
         }
 
         private void AddSeasonMenu_Click(object sender, EventArgs e)

@@ -7,10 +7,11 @@ using RestaurantMenu.RestaurantMenu;
 using Model.Core.MenuDir;
 using Model.Core.MealDir;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Security.Policy;
 
 namespace RestaurantMenu
 {
-    internal static class Program
+    public static class Program
     {
         /// <summary>
         ///  The main entry point for the application.
@@ -47,10 +48,9 @@ namespace RestaurantMenu
 
 
 
-            
+
 
             //MessageBox.Show(xml());
-
 
 
 
