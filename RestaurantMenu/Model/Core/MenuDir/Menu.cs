@@ -42,12 +42,12 @@ namespace Model.Core.MenuDir
 
         public void SaveMenu()
         {
-          //  JsonSerializer serializer = new JsonSerializer();
-            //serializer.Serialize(this);
+            Model.Data.Serializer ser = new Model.Data.JsonSerializer();
+            ser.Serialize(this);
         }
         public void LoadMenu()
         {
-
+          
         }
 
     }

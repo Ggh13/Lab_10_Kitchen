@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Model.Data;
 namespace Model.Core.Map
 {
     
@@ -21,6 +21,7 @@ namespace Model.Core.Map
             _description = description;
             _menus = new Menu[1];
             _menus[0] = new DefaultMenu();
+            
         }
 
         public void AddSeasonMenu()
