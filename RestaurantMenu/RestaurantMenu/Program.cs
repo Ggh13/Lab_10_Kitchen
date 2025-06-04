@@ -9,13 +9,12 @@ using Model.Core.MealDir;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Security.Policy;
 
+
 namespace RestaurantMenu
 {
     public static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
+    
         [STAThread]
         static void Main()
         {
@@ -24,7 +23,11 @@ namespace RestaurantMenu
             ApplicationConfiguration.Initialize();
 
             //DefaultMenu menu = new DefaultMenu();
-
+            
+            if (!Directory.Exists(Serializer.pathFolder))
+            {
+                Directory.CreateDirectory(Serializer.pathFolder);
+            }
             var rest = new Model.Core.Map.Restaurant("Clot Mone", "Oguzk chef?!?!?! NO WAY!");
             Model.Core.Map.Map.AddVenue(rest);
             

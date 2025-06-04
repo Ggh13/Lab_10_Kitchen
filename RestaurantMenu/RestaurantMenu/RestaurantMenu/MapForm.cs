@@ -15,6 +15,8 @@ namespace RestaurantMenu.RestaurantMenu
 
     public partial class MapForm : Form
     {
+        private BackgroundMusicPlayer musicPlayer;
+
         private System.Windows.Forms.Button[] VenueButtons = new System.Windows.Forms.Button[6];
         private int choosenVen = -1;
 
@@ -57,6 +59,22 @@ namespace RestaurantMenu.RestaurantMenu
                 VenueButtons[i].Size = new Size(250, 150);
             }
 
+            musicPlayer = new BackgroundMusicPlayer();
+
+            string musicPath = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "Audio", "music.mp3");
+           // MessageBox.Show(musicPath);
+            try
+            {
+                musicPlayer.Play(musicPath, volume: 0.3f, loop: true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Не удалось загрузить музыку: {ex.Message}");
+            }
+
+            
+
+
             ClassicMenuButton.Visible = false;
             SeasonMenuButton.Visible = false;
 
@@ -73,6 +91,15 @@ namespace RestaurantMenu.RestaurantMenu
         {
 
         }
+
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            musicPlayer.Dispose();
+            base.OnFormClosing(e);
+        }
+
+
         private void CommonBtn_Click(object sender, EventArgs e)
         {
             string msg = ((System.Windows.Forms.Button)sender).Name.ToString();
