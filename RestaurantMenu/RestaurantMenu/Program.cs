@@ -28,7 +28,6 @@ namespace RestaurantMenu
             var rest = new Model.Core.Map.Restaurant("Clot Mone", "Oguzk chef?!?!?! NO WAY!");
             Model.Core.Map.Map.AddVenue(rest);
             
-
             var cafe = new Model.Core.Map.Cafe("Arcabalene", "There are many krab`s burgers");
             Model.Core.Map.Map.AddVenue(cafe);
 
