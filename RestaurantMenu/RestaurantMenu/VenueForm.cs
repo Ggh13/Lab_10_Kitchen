@@ -203,11 +203,6 @@ namespace RestaurantMenu
             DisplayMeals();
         }
 
-        private void vScrollBarForMeals_Scroll(object sender, ScrollEventArgs e)
-        {
-
-        }
-
         private void DeleteMealButton_Click(object sender, EventArgs e)
         {
             var button = (Button)sender;
