@@ -23,13 +23,14 @@ namespace Model.Core.MenuDir
             id += 1;
             _meals = new Meal[0];
             nameOfVen = nameV;
+            MainSerialializer.SaveMenu(this);
         }
 
         public Menu()
         {
 
             _meals = new Meal[0];
-
+            MainSerialializer.SaveMenu(this);
         }
 
         private Meal[] _meals;
