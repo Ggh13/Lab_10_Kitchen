@@ -69,13 +69,11 @@ namespace Model.Data
 
 
             MenuDTO mN = new MenuDTO(data as Menu);
-            
-            using (var writer = new StreamWriter(Path.Combine(PathFolder, mN.nameOfVen.ToString() + "_" + mN.Id.ToString() + ".xml")))
+            string xml = Path.Combine(PathFolder, mN.nameOfVen.ToString() + "_" + mN.Id.ToString() + ".xml");
+            using (var writer = new StreamWriter(xml))
             {
-
-               sir.Serialize(writer, mN);
+                sir.Serialize(writer, mN);
             }
-            
         }
 
         public class DTOMeal
@@ -97,13 +95,10 @@ namespace Model.Data
         }
         public class MenuDTO
         {
-
-
             public string nameOfVen;
             public int Id;
             public MenuDTO(Menu menu)
             {
-
                 Id = menu.MyId;
                 nameOfVen = menu.NameOfVen;
                 Meals = new DTOMeal[menu.Meals.Length];
@@ -114,22 +109,12 @@ namespace Model.Data
                 Type = menu.Type;
             }
 
-            public MenuDTO()
-            {
-
-
-                
-
-
-            }
+            public MenuDTO(){ }
 
 
             public DTOMeal[] Meals;
 
             public string Type;
-
-           
-
 
         }
 

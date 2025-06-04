@@ -17,21 +17,10 @@ namespace Model.Data
         public virtual T Deserialize<T>(int id, string nameV) where T : Menu
         {
             return default(SeasonMenu) as T;
-           // throw default(object);
         }
 
         public virtual void Serialize<T>(T data)
         {
-    /*
-            var file_path = Path.Combine(PathFolder, data.Id.ToString() + ".json");
-            SelectFile(fileName);
-            WaterJumpSeril res = new WaterJumpSeril(participant);
-            var sir = new XmlSerializer(typeof(WaterJumpSeril));
-            using (var writer = new StreamWriter(FilePath))
-            {
-                sir.Serialize(writer, res);
-            }
-    */
 
         }
     }
