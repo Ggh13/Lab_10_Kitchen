@@ -219,8 +219,13 @@ namespace RestaurantMenu.RestaurantMenu
             //MessageBox.Show("Текст сообщения", "Заголовок", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             AddSeasonMenu.Visible = false;
-            chooseMenu.Items.AddRange(new string[] { "Сезонное"});
+            chooseMenu.Items.AddRange(new string[] { "Сезонное" });
 
+
+        }
+
+        private void MapForm_Load(object sender, EventArgs e)
+        {
 
         }
     }
