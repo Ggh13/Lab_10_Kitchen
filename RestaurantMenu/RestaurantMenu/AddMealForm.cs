@@ -8,12 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Model.Core.MenuDir;
+using Model.Data;
 
 namespace RestaurantMenu
 {
     public partial class AddMealForm : Form
     {
-        public AddMealForm()
+        Menu menu;
+        public AddMealForm(Menu menu_peredali)
         {
             InitializeComponent();
 
@@ -21,6 +24,8 @@ namespace RestaurantMenu
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+
+            menu = menu_peredali;
 
             InitComboBoxMealType();
             InitializeComponents();
@@ -31,13 +36,11 @@ namespace RestaurantMenu
             this.Text = "Добавить блюдо";
             this.Size = new Size(400, 250);
 
-            // Поле для названия
-            var lblName = new Label { Text = "Название блюда:", Location = new Point(20, 20) };
-            var txtName = new TextBox { Location = new Point(150, 20), Width = 200 };
+            var reqName = new Label { Text = "Название блюда:", Location = new Point(20, 20) };
+            var mealName = new TextBox { Location = new Point(150, 20), Width = 200 };
 
-            // Поле для цены
-            var lblPrice = new Label { Text = "Цена:", Location = new Point(20, 60) };
-            var txtPrice = new NumericUpDown
+            var reqPrice = new Label { Text = "Цена:", Location = new Point(20, 60) };
+            var mealPrice = new NumericUpDown
             {
                 Location = new Point(150, 60),
                 Width = 200,
@@ -46,28 +49,25 @@ namespace RestaurantMenu
                 DecimalPlaces = 2
             };
 
-            // ComboBox для типа блюда
-            var lblType = new Label { Text = "Тип:", Location = new Point(20, 100) };
-            var cmbType = new ComboBox
+            var reqType = new Label { Text = "Тип:", Location = new Point(20, 100) };
+            var mealType = new ComboBox
             {
                 Location = new Point(150, 100),
                 Width = 200,
                 DropDownStyle = ComboBoxStyle.DropDownList
             };
-            cmbType.Items.AddRange(new[] { "Салаты", "Десерты", "Горячие блюда", "Напитки" });
-            cmbType.SelectedIndex = 0;
+            mealType.Items.AddRange(new[] { "Салаты", "Десерты", "Горячие блюда", "Напитки" });
+            mealType.SelectedIndex = 0;
 
-            // Кнопка добавления
             var btnAdd = new Button
             {
                 Text = "Добавить",
                 Location = new Point(150, 150),
                 Size = new Size(100, 30)
             };
-            btnAdd.Click += (sender, e) => AddMeal(txtName.Text, (int)txtPrice.Value, cmbType.SelectedItem.ToString());
+            btnAdd.Click += (sender, e) => AddMeal(mealName.Text, (int)mealPrice.Value, mealType.SelectedItem.ToString());
 
-            // Добавляем элементы на форму
-            this.Controls.AddRange(new Control[] { lblName, txtName, lblPrice, txtPrice, lblType, cmbType, btnAdd });
+            this.Controls.AddRange(new Control[] { reqName, mealName, reqPrice, mealPrice, reqType, mealType, btnAdd });
         }
 
         private void AddMeal(string name, int price, string type)
@@ -77,7 +77,7 @@ namespace RestaurantMenu
                 MessageBox.Show("Введите название блюда");
                 return;
             }
-            Meal addedMeal;
+            Meal addedMeal = null;
             switch (type)
             {
                 case "Салаты":
@@ -93,7 +93,8 @@ namespace RestaurantMenu
                     addedMeal = new Drink(name, price);
                     break;
             }
-            
+            menu.AddMeal(addedMeal);
+            MainSerialializer.SaveMenu(menu);
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -107,14 +108,14 @@ namespace RestaurantMenu
             //comboBoxMealType.SelectedIndex = 0;
         }
 
-        private void AddMealForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void AddButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void AddMealForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
