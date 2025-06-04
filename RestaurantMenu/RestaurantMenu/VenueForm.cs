@@ -23,11 +23,9 @@ namespace RestaurantMenu
         public VenueForm(int id, string venue_name)
         {
             menu = MainSerialializer.LoadMenu(id, venue_name);
-            //menu = new SeasonMenu("Arcabaene");
             InitializeComponent();
             this.Size = new Size(1000, 800);
 
-            
             InitComboBoxMealType();
             InitComboBoxChooseFileType();
             DisplayMeals();
@@ -173,11 +171,6 @@ namespace RestaurantMenu
 
         }
 
-        private void header_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void ChooseFileType_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedValue = ChooseFileType.SelectedItem.ToString();
@@ -199,15 +192,6 @@ namespace RestaurantMenu
             string format = typeToSave == "JSON" ? "json" : "xml";
             changeFormat(format);
 
-            //if (typeToSave == "JSON")
-            //{
-            //    MainSerialializer.ChangeFormat("json");
-            //}
-            //else
-            //{
-            //    MainSerialializer.ChangeFormat("xml");
-            //}
-
             MainSerialializer.SaveMenu(menu);
         }
 
@@ -219,11 +203,6 @@ namespace RestaurantMenu
             DisplayMeals();
         }
 
-        private void vScrollBarForMeals_Scroll(object sender, ScrollEventArgs e)
-        {
-
-        }
-
         private void DeleteMealButton_Click(object sender, EventArgs e)
         {
             var button = (Button)sender;
@@ -231,11 +210,6 @@ namespace RestaurantMenu
             menu.DeleteMeal(mealToDelete);
             MainSerialializer.SaveMenu(menu);
             DisplayMeals();
-        }
-
-        private void ShowMealsButton_Click(object sender, EventArgs e)
-        {
-
         }
 
     }

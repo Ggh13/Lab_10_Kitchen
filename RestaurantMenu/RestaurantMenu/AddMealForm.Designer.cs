@@ -38,7 +38,6 @@
             Name = "AddMealForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AddMealForm";
-            Load += AddMealForm_Load;
             ResumeLayout(false);
         }
 

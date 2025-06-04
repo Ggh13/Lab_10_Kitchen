@@ -24,7 +24,7 @@ namespace RestaurantMenu
             InitializeComponent();
 
             this.Size = new Size(450, 250);
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            //this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
 
@@ -116,11 +116,6 @@ namespace RestaurantMenu
         private void AddButton_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void AddMealForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
