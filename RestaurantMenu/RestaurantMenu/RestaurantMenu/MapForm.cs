@@ -160,8 +160,7 @@ namespace RestaurantMenu.RestaurantMenu
                     ButtonFastFood1.Visible = true;
                     ButtonFastFood2.Visible = true;
                 }
-            }
-            //MessageBox.Show(selectedState);
+            };
         }
 
         private void vizOffAll()

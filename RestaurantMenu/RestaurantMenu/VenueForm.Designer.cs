@@ -34,11 +34,12 @@
             header = new Panel();
             MealsLabel = new Label();
             panel1 = new Panel();
-            AddMealButton = new Button();
             panel2 = new Panel();
+            SaveText = new Label();
             SaveButton = new Button();
             ChooseFileType = new ComboBox();
-            label1 = new Label();
+            label6 = new Label();
+            AddMealButton = new Button();
             flowLayoutPanel = new FlowLayoutPanel();
             sidebar.SuspendLayout();
             header.SuspendLayout();
@@ -106,34 +107,33 @@
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(AddMealButton);
             panel1.Controls.Add(panel2);
+            panel1.Controls.Add(AddMealButton);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(241, 77);
             panel1.Name = "panel1";
             panel1.Size = new Size(741, 57);
             panel1.TabIndex = 3;
             // 
-            // AddMealButton
-            // 
-            AddMealButton.Font = new Font("Segoe UI", 12F);
-            AddMealButton.Location = new Point(419, 3);
-            AddMealButton.Name = "AddMealButton";
-            AddMealButton.Size = new Size(295, 48);
-            AddMealButton.TabIndex = 4;
-            AddMealButton.Text = "Добавить позицию в меню";
-            AddMealButton.UseVisualStyleBackColor = true;
-            AddMealButton.Click += AddMealButton_Click;
-            // 
             // panel2
             // 
+            panel2.Controls.Add(SaveText);
             panel2.Controls.Add(SaveButton);
             panel2.Controls.Add(ChooseFileType);
-            panel2.Controls.Add(label1);
+            panel2.Controls.Add(label6);
             panel2.Location = new Point(5, 3);
             panel2.Name = "panel2";
             panel2.Size = new Size(389, 61);
-            panel2.TabIndex = 0;
+            panel2.TabIndex = 7;
+            // 
+            // SaveText
+            // 
+            SaveText.Font = new Font("Segoe UI", 12F);
+            SaveText.Location = new Point(43, 10);
+            SaveText.Name = "SaveText";
+            SaveText.Size = new Size(222, 27);
+            SaveText.TabIndex = 6;
+            SaveText.Text = "Сохранить в формате";
             // 
             // SaveButton
             // 
@@ -154,14 +154,23 @@
             ChooseFileType.TabIndex = 4;
             ChooseFileType.SelectedIndexChanged += ChooseFileType_SelectedIndexChanged;
             // 
-            // label1
+            // label6
             // 
-            label1.Font = new Font("Segoe UI", 12F);
-            label1.Location = new Point(3, 7);
-            label1.Name = "label1";
-            label1.Size = new Size(283, 41);
-            label1.TabIndex = 0;
-            label1.Text = "Сохранить меню в формате";
+            label6.Location = new Point(0, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(100, 23);
+            label6.TabIndex = 5;
+            // 
+            // AddMealButton
+            // 
+            AddMealButton.Font = new Font("Segoe UI", 12F);
+            AddMealButton.Location = new Point(419, 3);
+            AddMealButton.Name = "AddMealButton";
+            AddMealButton.Size = new Size(295, 48);
+            AddMealButton.TabIndex = 4;
+            AddMealButton.Text = "Добавить позицию в меню";
+            AddMealButton.UseVisualStyleBackColor = true;
+            AddMealButton.Click += AddMealButton_Click;
             // 
             // flowLayoutPanel
             // 
@@ -199,11 +208,12 @@
         private Label MealsLabel;
         private ComboBox ComboBoxMealType;
         private Label MealTypeFinderLabel;
-        private Panel panel2;
-        private Label label1;
-        private ComboBox ChooseFileType;
-        private Button SaveButton;
         private Button AddMealButton;
         private FlowLayoutPanel flowLayoutPanel;
+        private Panel panel2;
+        private Button SaveButton;
+        private ComboBox ChooseFileType;
+        private Label label6;
+        private Label SaveText;
     }
 }
