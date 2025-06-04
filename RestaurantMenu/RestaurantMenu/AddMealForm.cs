@@ -98,7 +98,7 @@ namespace RestaurantMenu
                     break;
             }
             menu.AddMeal(addedMeal);
-            menu = MainSerialializer.LoadMenu(menu.MyId, menu.NameOfVen);
+            MainSerialializer.SaveMenu(menu);
             this.DialogResult = DialogResult.OK;
             venueForm.DisplayMeals();
             this.Close();

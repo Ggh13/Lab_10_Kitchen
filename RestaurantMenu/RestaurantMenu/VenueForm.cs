@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.DataFormats;
 //using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace RestaurantMenu
@@ -25,10 +26,8 @@ namespace RestaurantMenu
             //menu = new SeasonMenu("Arcabaene");
             InitializeComponent();
             this.Size = new Size(1000, 800);
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
 
+            
             InitComboBoxMealType();
             InitComboBoxChooseFileType();
             DisplayMeals();
@@ -36,7 +35,16 @@ namespace RestaurantMenu
         private void InitComboBoxChooseFileType()
         {
             ChooseFileType.DropDownStyle = ComboBoxStyle.DropDownList;
-            string[] fileTypes = { "JSON", "XML" };
+            string[] fileTypes = null;
+            if (MainSerialializer.Format == "json")
+            {
+                fileTypes = new string[] { "JSON", "XML" };
+            }
+            else
+            {
+                fileTypes = new string[] { "XML",  "JSON" };
+            }
+            
             ChooseFileType.Items.AddRange(fileTypes);
 
             ChooseFileType.SelectedIndex = 0;
@@ -176,26 +184,38 @@ namespace RestaurantMenu
             typeToSave = selectedValue;
         }
 
+        private delegate void ChangeFormatDelegate(string format);
+
         private void SaveButton_Click(object sender, EventArgs e)
         {
             /* 
                Привет антоние, я пришел скушать ватрушку с медом  маслом, еще я любю жевать воск из под сот. Он как жевачка и прям с медом, я рекомендую шефу добавить это людо в апитайзеры, чтобы огузок ходил и разносил критикам, и у них попа слиплась от меда.
             */
-            if (typeToSave == "JSON")
+            ChangeFormatDelegate changeFormat = delegate (string format)
             {
-                MainSerialializer.ChangeFormat("json");
-            }
-            else
-            {
-                MainSerialializer.ChangeFormat("xml");
-            }
+                MainSerialializer.ChangeFormat(format);
+            };
+
+            string format = typeToSave == "JSON" ? "json" : "xml";
+            changeFormat(format);
+
+            //if (typeToSave == "JSON")
+            //{
+            //    MainSerialializer.ChangeFormat("json");
+            //}
+            //else
+            //{
+            //    MainSerialializer.ChangeFormat("xml");
+            //}
+
+            MainSerialializer.SaveMenu(menu);
         }
 
         private void AddMealButton_Click(object sender, EventArgs e)
         {
             AddMealForm form = new AddMealForm(menu, this);
             form.Show();
-            
+
             DisplayMeals();
         }
 
@@ -209,16 +229,11 @@ namespace RestaurantMenu
             var button = (Button)sender;
             Meal mealToDelete = (Meal)button.Tag;
             menu.DeleteMeal(mealToDelete);
-            menu = MainSerialializer.LoadMenu(menu.MyId, menu.NameOfVen);
+            MainSerialializer.SaveMenu(menu);
             DisplayMeals();
         }
 
         private void ShowMealsButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel_Paint(object sender, PaintEventArgs e)
         {
 
         }
