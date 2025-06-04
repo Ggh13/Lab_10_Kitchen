@@ -11,7 +11,7 @@ namespace Model.Core.MenuDir
     public abstract partial class Menu : IMenu
     {
 
-        private static int id = 0;
+        protected static int id = 0;
         protected string nameOfVen;
         protected int my_id;
         public int MyId => my_id;
@@ -21,16 +21,20 @@ namespace Model.Core.MenuDir
         public Menu(string nameV) {
 
             id += 1;
+            
             _meals = new Meal[0];
             nameOfVen = nameV;
-            MainSerialializer.SaveMenu(this);
+           
         }
 
         public Menu()
         {
 
             _meals = new Meal[0];
-            MainSerialializer.SaveMenu(this);
+
+           //MainSerialializer.LoadMenu();
+
+
         }
 
         private Meal[] _meals;

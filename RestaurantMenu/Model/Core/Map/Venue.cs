@@ -30,7 +30,8 @@ namespace Model.Core.Map
             {
                 haveSeasonMenu = true;
 
-               
+                
+
 
                 Menu[] updatedMeals = new Menu[_menus.Length + 1];
 
@@ -38,6 +39,10 @@ namespace Model.Core.Map
                 updatedMeals[_menus.Length] = new SeasonMenu(Name);
 
                 _menus = updatedMeals;
+
+                MainSerialializer.SaveMenu(_menus[1], true);
+
+                _menus[1] = MainSerialializer.LoadMenu(_menus[1].MyId, _menus[1].NameOfVen);
             }
             
         }

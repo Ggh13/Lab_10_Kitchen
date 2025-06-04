@@ -240,6 +240,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "MapForm";
             Text = "MapForm";
+            Load += MapForm_Load;
             MainPanel.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
