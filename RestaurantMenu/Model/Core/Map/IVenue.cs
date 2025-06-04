@@ -10,7 +10,7 @@ namespace Model.Core.Map
     {
         public void AddSeasonMenu() { }
         public void DeleteSeasonMenu() { }
-        // NowHaveSeasonMenu???
+        
 
     }
 }

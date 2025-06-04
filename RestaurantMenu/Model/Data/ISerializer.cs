@@ -9,7 +9,6 @@ namespace Model.Data
 {
     public interface ISerializer
     {
-       
        public void Serialize<T>(T data);
 
         public T Deserialize<T>(int id, string nameV) where T : Menu;

@@ -16,7 +16,6 @@ namespace Model.Core.MenuDir
         protected int my_id;
         public int MyId => my_id;
         public string NameOfVen => nameOfVen;
-        //public int Id { get { return id; } }
         [JsonConstructor]
         public Menu(string nameV) {
 
@@ -24,15 +23,12 @@ namespace Model.Core.MenuDir
             
             _meals = new Meal[0];
             nameOfVen = nameV;
-           
         }
 
         public Menu()
         {
 
             _meals = new Meal[0];
-
-           //MainSerialializer.LoadMenu();
 
 
         }
@@ -66,11 +62,6 @@ namespace Model.Core.MenuDir
         public void LoadMenu(int id)
         {
             Model.Data.Serializer ser = new Model.Data.JsonSerializer();
-
-           // var menu = ser.Deserialize<Menu>(Id);
-           // id = menu.Id;
-            //_meals = menu.Meals;
-
         }
 
     }

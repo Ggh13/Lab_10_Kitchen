@@ -32,12 +32,6 @@ namespace RestaurantMenu.RestaurantMenu
         public MapForm()
         {
             InitializeComponent();
-
-            //this.Size = new Size(1000, 800);
-            //this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            //this.MaximizeBox = false;
-            //this.MinimizeBox = false;
-
             VenueButtons[0] = ButtonRestaurant1;
             VenueButtons[1] = ButtonRestaurant2;
             VenueButtons[2] = ButtonCafe1;
@@ -45,11 +39,10 @@ namespace RestaurantMenu.RestaurantMenu
             VenueButtons[4] = ButtonFastFood1;
             VenueButtons[5] = ButtonFastFood2;
 
-
             foreach (var item in VenueButtons)
             {
 
-                item.Click += CommonBtn_Click; //приводим к типу и устанавливаем обработчик события  
+                item.Click += CommonBtn_Click;
 
             }
 
@@ -62,7 +55,6 @@ namespace RestaurantMenu.RestaurantMenu
             musicPlayer = new BackgroundMusicPlayer();
 
             string musicPath = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "Audio", "music.mp3");
-           // MessageBox.Show(musicPath);
             try
             {
                 musicPlayer.Play(musicPath, volume: 0.3f, loop: true);
@@ -71,10 +63,6 @@ namespace RestaurantMenu.RestaurantMenu
             {
                 MessageBox.Show($"Не удалось загрузить музыку: {ex.Message}");
             }
-
-            
-
-
             ClassicMenuButton.Visible = false;
             SeasonMenuButton.Visible = false;
 

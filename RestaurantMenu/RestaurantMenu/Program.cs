@@ -18,49 +18,15 @@ namespace RestaurantMenu
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            //DefaultMenu menu = new DefaultMenu();
-            
-            
-            var rest = new Model.Core.Map.Restaurant("Clot Mone", "Oguzk chef?!?!?! NO WAY!");
-            Model.Core.Map.Map.AddVenue(rest);
-            
-            var cafe = new Model.Core.Map.Cafe("Arcabalene", "There are many krab`s burgers");
-            Model.Core.Map.Map.AddVenue(cafe);
-
-           
-
-
-            var cafe2 = new Model.Core.Map.Cafe("Рыба и мясо", "There are many krab`s burgers");
-            Model.Core.Map.Map.AddVenue(cafe2);
-
-            var rest2 = new Model.Core.Map.Restaurant("Victor", "There are many krab`s burgers");
-            Model.Core.Map.Map.AddVenue(rest2);
-
-            var FF1 = new Model.Core.Map.FastFood("STOLOVKA MISIS", "There are many krab`s burgers");
-            Model.Core.Map.Map.AddVenue(FF1);
-
-           
-
-            var FF2 = new Model.Core.Map.FastFood("DYAGILEV", "There are many krab`s burgers");
-            Model.Core.Map.Map.AddVenue(FF2);
-
-            for (int i = 0; i < Map.Venues.Length; i++)
-            {
-                MainSerialializer.SaveMenu(Map.Venues[i].Menus[0], true);
-                //MainSerialializer.SaveMenu(Map.Venues[i].Menus[1], true);
-            }
-
-            //MessageBox.Show(checkGS());
+            Map.StartMap();
 
             MapForm mf = new RestaurantMenu.MapForm();
             Application.Run(mf);
         }
 
-
+        /*
         public static string checkGS()
         {
 
@@ -117,5 +83,6 @@ namespace RestaurantMenu
             
 
         }
+        */
     }
 }
