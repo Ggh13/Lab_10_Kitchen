@@ -9,9 +9,10 @@ using System.Xml.Serialization;
 
 namespace Model.Data
 {
+
     public abstract class Serializer : ISerializer
     {
-        public readonly static string pathFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        public readonly static string pathFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Kitchen");
         public string PathFolder { get { return pathFolder; } }
         public virtual T Deserialize<T>(int id, string nameV) where T : Menu
         {

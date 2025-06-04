@@ -19,8 +19,16 @@ namespace Model.Core.Map
         {
             _name = name;
             _description = description;
-            _menus = new Menu[1];
+            _menus = new Menu[2];
             _menus[0] = new DefaultMenu(name);
+            
+            _menus[1] = new SeasonMenu(name);
+            if(MainSerialializer.LoadMenu(_menus[1].MyId, _menus[1].NameOfVen) != null)
+            {
+                haveSeasonMenu = true;
+
+                //_menus[1] = MainSerialializer.LoadMenu(_menus[1].MyId, _menus[1].NameOfVen);
+            }
             
         }
 
@@ -31,14 +39,6 @@ namespace Model.Core.Map
                 haveSeasonMenu = true;
 
                 
-
-
-                Menu[] updatedMeals = new Menu[_menus.Length + 1];
-
-                Array.Copy(_menus, updatedMeals, _menus.Length);
-                updatedMeals[_menus.Length] = new SeasonMenu(Name);
-
-                _menus = updatedMeals;
 
                 MainSerialializer.SaveMenu(_menus[1], true);
 

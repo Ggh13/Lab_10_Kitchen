@@ -9,13 +9,12 @@ using Model.Core.MealDir;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Security.Policy;
 
+
 namespace RestaurantMenu
 {
     public static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
+    
         [STAThread]
         static void Main()
         {
@@ -24,14 +23,18 @@ namespace RestaurantMenu
             ApplicationConfiguration.Initialize();
 
             //DefaultMenu menu = new DefaultMenu();
-
+            
+            if (!Directory.Exists(Serializer.pathFolder))
+            {
+                Directory.CreateDirectory(Serializer.pathFolder);
+            }
             var rest = new Model.Core.Map.Restaurant("Clot Mone", "Oguzk chef?!?!?! NO WAY!");
             Model.Core.Map.Map.AddVenue(rest);
             
             var cafe = new Model.Core.Map.Cafe("Arcabalene", "There are many krab`s burgers");
             Model.Core.Map.Map.AddVenue(cafe);
 
-            MessageBox.Show(cafe.Menus[0].MyId.ToString());
+           
 
 
             var cafe2 = new Model.Core.Map.Cafe("Рыба и мясо", "There are many krab`s burgers");
@@ -43,14 +46,18 @@ namespace RestaurantMenu
             var FF1 = new Model.Core.Map.FastFood("STOLOVKA MISIS", "There are many krab`s burgers");
             Model.Core.Map.Map.AddVenue(FF1);
 
+           
+
             var FF2 = new Model.Core.Map.FastFood("DYAGILEV", "There are many krab`s burgers");
             Model.Core.Map.Map.AddVenue(FF2);
 
             for (int i = 0; i < Map.Venues.Length; i++)
             {
                 MainSerialializer.SaveMenu(Map.Venues[i].Menus[0], true);
+                //MainSerialializer.SaveMenu(Map.Venues[i].Menus[1], true);
             }
 
+            //MessageBox.Show(checkGS());
 
             MapForm mf = new RestaurantMenu.MapForm();
             Application.Run(mf);
@@ -59,9 +66,10 @@ namespace RestaurantMenu
 
         public static string checkGS()
         {
-            
 
-            //MainSerialializer.SaveMenu(MainSerialializer.LoadMenu(0, "NAME"), "xml");
+            DefaultMenu dm = (DefaultMenu)MainSerialializer.LoadMenu(6, "DYAGILEV");
+            dm.AddMeal(new Drink("2222", 12));
+            MainSerialializer.SaveMenu(dm);
 
             return "allDone";
         }
