@@ -43,7 +43,7 @@ RestaurantMenu/
 ## Руководство пользователя
 
 ### Главное окно
-![Главное окно](screenshots/main-window.png)
+
 
 1. **Выбор типа заведения**:
    - Кафе. рестораны или фастфуд
@@ -104,3 +104,5 @@ RestaurantMenu/
 ## Технические детали
 - Требуется библиотеки Newtonsoft.Json
 - JSON/XML сериализация
+
+<img src="https://github.com/user-attachments/assets/5084886e-b88b-466f-ae34-5394d2ea9e9d" alt="Alt Text" width="300" height="200">
