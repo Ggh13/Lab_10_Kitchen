@@ -8,6 +8,8 @@ namespace Model.Core.MenuDir
 {
     public class SeasonMenu : Menu
     {
-        public SeasonMenu() : base() { }
+        public SeasonMenu() : base() {
+            this.SaveMenu();
+        }
     }
 }

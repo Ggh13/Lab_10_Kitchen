@@ -15,12 +15,15 @@ namespace RestaurantMenu
 {
     public partial class VenueForm : Form
     {
-        private DefaultMenu defaultMenu = new DefaultMenu();
+        private Menu defaultMenu = new DefaultMenu();
+        private string typeToSave = "Json";
+
         public VenueForm(int id)
         {
-            defaultMenu.AddMeal(new Dessert("Наполеон", 200));
-            defaultMenu.AddMeal(new Salad("Нисуаз", 1100));
-            defaultMenu.AddMeal(new HotDish("Буябес", 700));
+            defaultMenu.LoadMenu(id);
+            //defaultMenu.AddMeal(new Dessert("Наполеон", 200));
+            //defaultMenu.AddMeal(new Salad("Нисуаз", 1100));
+            //defaultMenu.AddMeal(new HotDish("Буябес", 700));
             InitializeComponent();
             this.Size = new Size(1000, 800);
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -170,7 +173,8 @@ namespace RestaurantMenu
 
         private void ChooseFileType_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            string selectedValue = ChooseFileType.SelectedItem.ToString();
+            typeToSave = selectedValue;
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
@@ -178,11 +182,19 @@ namespace RestaurantMenu
             /* 
                Привет антоние, я пришел скушать ватрушку с медом  маслом, еще я любю жевать воск из под сот. Он как жевачка и прям с медом, я рекомендую шефу добавить это людо в апитайзеры, чтобы огузок ходил и разносил критикам, и у них попа слиплась от меда.
             */
+            if (typeToSave == "JSON")
+            {
+
+            }
+            else
+            {
+
+            }
         }
 
         private void AddMealButton_Click(object sender, EventArgs e)
         {
-            AddMealForm form = new AddMealForm();
+            AddMealForm form = new AddMealForm(defaultMenu);
             form.Show();
         }
 
@@ -208,5 +220,6 @@ namespace RestaurantMenu
         {
 
         }
+
     }
 }

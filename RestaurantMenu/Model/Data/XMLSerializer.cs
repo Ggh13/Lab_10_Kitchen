@@ -77,15 +77,9 @@ namespace Model.Data
 
             public Menu ToMenu()
             {
-                // Здесь нужно создать конкретный экземпляр Menu в зависимости от Type
-                // Это пример, вам нужно адаптировать под вашу реализацию
-                Menu menu = null; // Create appropriate menu instance based on Type
 
-                // Пример (замените на вашу логику создания меню):
-                // if (Type == "SomeConcreteMenuType")
-                //     menu = new SomeConcreteMenuType();
+                Menu menu = null;
 
-                // Затем добавить блюда
                 if (menu != null)
                 {
                     var meals = Meals.Select(m => m.ToMeal()).ToArray();
@@ -120,13 +114,8 @@ namespace Model.Data
 
             public Meal ToMeal()
             {
-                // Здесь нужно создать конкретный экземпляр Meal в зависимости от Type
-                // Это пример, вам нужно адаптировать под вашу реализацию
-                Meal meal = null; // Create appropriate meal instance based on Type
 
-                // Пример (замените на вашу логику создания блюда):
-                // if (Type == "SomeConcreteMealType")
-                //     meal = new SomeConcreteMealType(Name, Price);
+                Meal meal = null;
 
                 return meal;
             }

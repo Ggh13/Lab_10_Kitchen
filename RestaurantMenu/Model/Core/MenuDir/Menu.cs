@@ -45,9 +45,12 @@ namespace Model.Core.MenuDir
             Model.Data.Serializer ser = new Model.Data.JsonSerializer();
             ser.Serialize(this);
         }
-        public void LoadMenu()
+        public void LoadMenu(int id)
         {
-          
+            Model.Data.Serializer ser = new Model.Data.JsonSerializer();
+            var menu = ser.Deserialize<Menu>(Id);
+            id = menu.Id;
+            _meals = menu.Meals;
         }
 
     }

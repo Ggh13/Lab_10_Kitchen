@@ -10,6 +10,7 @@ namespace Model.Core.MenuDir
     {
         public DefaultMenu() : base() {
             id += 1;
+            this.SaveMenu();
         }
     }
 }

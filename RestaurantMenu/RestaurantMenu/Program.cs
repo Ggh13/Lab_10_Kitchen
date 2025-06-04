@@ -27,32 +27,24 @@ namespace RestaurantMenu
 
             var rest = new Model.Core.Map.Restaurant("Clot Mone", "Oguzk chef?!?!?! NO WAY!");
             Model.Core.Map.Map.AddVenue(rest);
-            
-            
 
-            var cafe = new Model.Core.Map.Cafe("The Krusty Krab", "There are many krab`s burgers");
+
+            var cafe = new Model.Core.Map.Cafe("Arcabalene", "There are many krab`s burgers");
             Model.Core.Map.Map.AddVenue(cafe);
 
-            var cafe2 = new Model.Core.Map.Cafe("The Krusty Krab", "There are many krab`s burgers");
+            var cafe2 = new Model.Core.Map.Cafe("Zhopa negra", "There are many krab`s burgers");
             Model.Core.Map.Map.AddVenue(cafe2);
 
-            var rest2 = new Model.Core.Map.Restaurant("The Krusty Krab", "There are many krab`s burgers");
+            var rest2 = new Model.Core.Map.Restaurant("Victor", "There are many krab`s burgers");
             Model.Core.Map.Map.AddVenue(rest2);
 
-            var FF1 = new Model.Core.Map.FastFood("The Krusty Krab", "There are many krab`s burgers");
+            var FF1 = new Model.Core.Map.FastFood("cvlkjjklfgajklfgdmnkl", "There are many krab`s burgers");
             Model.Core.Map.Map.AddVenue(FF1);
 
             var FF2 = new Model.Core.Map.FastFood("The Krusty Krab", "There are many krab`s burgers");
             Model.Core.Map.Map.AddVenue(FF2);
 
-
-
-
-
-
             //MessageBox.Show(xml());
-
-
 
             MapForm mf = new RestaurantMenu.MapForm();
             Application.Run(mf);

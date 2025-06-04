@@ -54,7 +54,7 @@ namespace Model.Data
             }
         }
 
-        public void Serialize<T>(T data)
+        public override void Serialize<T>(T data)
         {
 
             var settings = new JsonSerializerSettings
