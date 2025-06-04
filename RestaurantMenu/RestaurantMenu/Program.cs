@@ -31,7 +31,7 @@ namespace RestaurantMenu
             var cafe = new Model.Core.Map.Cafe("Arcabalene", "There are many krab`s burgers");
             Model.Core.Map.Map.AddVenue(cafe);
 
-            MessageBox.Show(cafe.Menus[0].MyId.ToString());
+           
 
 
             var cafe2 = new Model.Core.Map.Cafe("Рыба и мясо", "There are many krab`s burgers");
@@ -43,6 +43,8 @@ namespace RestaurantMenu
             var FF1 = new Model.Core.Map.FastFood("STOLOVKA MISIS", "There are many krab`s burgers");
             Model.Core.Map.Map.AddVenue(FF1);
 
+           
+
             var FF2 = new Model.Core.Map.FastFood("DYAGILEV", "There are many krab`s burgers");
             Model.Core.Map.Map.AddVenue(FF2);
 
@@ -51,6 +53,7 @@ namespace RestaurantMenu
                 MainSerialializer.SaveMenu(Map.Venues[i].Menus[0], true);
             }
 
+            MessageBox.Show(checkGS());
 
             MapForm mf = new RestaurantMenu.MapForm();
             Application.Run(mf);
@@ -59,9 +62,10 @@ namespace RestaurantMenu
 
         public static string checkGS()
         {
-            
 
-            //MainSerialializer.SaveMenu(MainSerialializer.LoadMenu(0, "NAME"), "xml");
+            DefaultMenu dm = (DefaultMenu)MainSerialializer.LoadMenu(6, "DYAGILEV");
+            dm.AddMeal(new Drink("2222", 12));
+            MainSerialializer.SaveMenu(dm);
 
             return "allDone";
         }
