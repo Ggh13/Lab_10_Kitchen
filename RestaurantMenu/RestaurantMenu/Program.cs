@@ -9,13 +9,12 @@ using Model.Core.MealDir;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Security.Policy;
 
+
 namespace RestaurantMenu
 {
     public static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
+    
         [STAThread]
         static void Main()
         {
