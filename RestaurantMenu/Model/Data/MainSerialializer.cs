@@ -12,6 +12,7 @@ namespace Model.Data
     public static class MainSerialializer
     {
         private static string format = "json";
+        public static string Format => format;
         public static void ChangeFormat(string Newformat)
         {
             if (Newformat == "json")

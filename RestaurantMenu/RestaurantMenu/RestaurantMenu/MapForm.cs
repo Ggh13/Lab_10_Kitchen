@@ -32,6 +32,12 @@ namespace RestaurantMenu.RestaurantMenu
         public MapForm()
         {
             InitializeComponent();
+
+            //this.Size = new Size(1000, 800);
+            //this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            //this.MaximizeBox = false;
+            //this.MinimizeBox = false;
+
             VenueButtons[0] = ButtonRestaurant1;
             VenueButtons[1] = ButtonRestaurant2;
             VenueButtons[2] = ButtonCafe1;
@@ -50,7 +56,7 @@ namespace RestaurantMenu.RestaurantMenu
             for (int i = 0; i < 6; i++)
             {
                 VenueButtons[i].Text = Map.Venues[i].Name;
-                VenueButtons[i].Size = new Size(420, 200);
+                VenueButtons[i].Size = new Size(250, 150);
             }
 
             musicPlayer = new BackgroundMusicPlayer();
@@ -71,24 +77,14 @@ namespace RestaurantMenu.RestaurantMenu
 
             ClassicMenuButton.Visible = false;
             SeasonMenuButton.Visible = false;
-            label1.Text = "Aboba";
 
             AddSeasonMenu.Visible = false;
 
             comboRestaurant.DropDownStyle = ComboBoxStyle.DropDownList;
-
             comboRestaurant.SelectedIndexChanged += comboRestaurant_SelectedIndexChanged;
-
-
-            comboRestaurant.Items.AddRange(new string[] { "Рестораны", "Кафе", "ФастФуд" });
-
-
+            comboRestaurant.Items.AddRange(new string[] { "Все", "Рестораны", "Кафе", "ФастФуд" });
+            comboRestaurant.SelectedIndex = 0;
             chooseMenu.DropDownStyle = ComboBoxStyle.DropDownList;
-
-            //chooseMenu.SelectedIndexChanged += comboRestaurant_SelectedIndexChanged;
-
-
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -122,6 +118,7 @@ namespace RestaurantMenu.RestaurantMenu
                 chooseMenu.Items.AddRange(new string[] { "Классическое" });
                 AddSeasonMenu.Visible = true;
             }
+            chooseMenu.SelectedIndex = 0;
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
@@ -182,8 +179,17 @@ namespace RestaurantMenu.RestaurantMenu
                     ButtonCafe1.Visible = true;
                     ButtonCafe2.Visible = true;
                 }
+                else if (selectedState == "ФастФуд")
+                {
+                    ButtonFastFood1.Visible = true;
+                    ButtonFastFood2.Visible = true;
+                }
                 else
                 {
+                    ButtonRestaurant1.Visible = true;
+                    ButtonRestaurant2.Visible = true;
+                    ButtonCafe1.Visible = true;
+                    ButtonCafe2.Visible = true;
                     ButtonFastFood1.Visible = true;
                     ButtonFastFood2.Visible = true;
                 }
@@ -238,22 +244,31 @@ namespace RestaurantMenu.RestaurantMenu
 
         private void AddSeasonMenu_Click(object sender, EventArgs e)
         {
-            //Map.Venues[choosenVen].HaveSeasonMenu = true;
             MessageBox.Show("Сезонное меню успешно добавлено".ToString());
 
-
             Map.Venues[choosenVen].AddSeasonMenu();
-            //MessageBox.Show("Текст сообщения", "Заголовок", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             AddSeasonMenu.Visible = false;
             chooseMenu.Items.AddRange(new string[] { "Сезонное" });
-
-
         }
 
         private void MapForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void panel2_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
+        }
+
+        private void panel2_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
         }
     }
 }
