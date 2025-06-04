@@ -11,11 +11,11 @@ namespace Model.Core.MenuDir
 
         public DefaultMenu() 
         {
-
+            my_id = id;
         }
         public DefaultMenu(string nameV) : base(nameV) {
-            
 
+            my_id = id;
         }
         public DefaultMenu(string nameV, int id) : base(nameV)
         {

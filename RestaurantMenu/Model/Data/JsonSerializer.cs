@@ -94,7 +94,7 @@ namespace Model.Data
 
             
             
-           var menu = data as Menu;
+           var menu = (data as Menu);
            file_path = Path.Combine(PathFolder, menu.NameOfVen.ToString() + "_" + menu.MyId.ToString() + ".json");
             
             

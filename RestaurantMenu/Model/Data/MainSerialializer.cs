@@ -44,8 +44,29 @@ namespace Model.Data
             return res;
         }
 
-        public static void SaveMenu(Menu menu_to_save)
+        public static void SaveMenu(Menu menu_to_save, bool just_cre = false)
         {
+
+
+            var xmlFile = Path.Combine(Serializer.pathFolder, menu_to_save.NameOfVen + "_" + menu_to_save.MyId.ToString() + ".xml");
+            var jsonFile = Path.Combine(Serializer.pathFolder, menu_to_save.NameOfVen + "_" + menu_to_save.MyId.ToString() + ".json");
+
+            if (just_cre)
+            {
+                if (File.Exists(xmlFile))
+                {
+                    return;
+                }
+                else if (File.Exists(jsonFile))
+                {
+                    return;
+
+                }
+            }
+            
+
+
+
             Serializer ser = default(Serializer);
             string file_to_del = Path.Combine(Serializer.pathFolder, menu_to_save.NameOfVen + "_" +  menu_to_save.MyId.ToString());
             if (format == "xml")

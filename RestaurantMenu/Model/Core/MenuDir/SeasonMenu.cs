@@ -13,12 +13,12 @@ namespace Model.Core.MenuDir
         public SeasonMenu()
         {
 
-    
+            my_id = id;
         }
         public SeasonMenu(string nameV) : base(nameV)
         {
 
-      
+            my_id = id;
         }
         public SeasonMenu(string nameV, int id) : base(nameV) {
 
