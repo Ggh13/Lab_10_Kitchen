@@ -51,9 +51,10 @@ namespace RestaurantMenu
             for (int i = 0; i < Map.Venues.Length; i++)
             {
                 MainSerialializer.SaveMenu(Map.Venues[i].Menus[0], true);
+                //MainSerialializer.SaveMenu(Map.Venues[i].Menus[1], true);
             }
 
-            MessageBox.Show(checkGS());
+            //MessageBox.Show(checkGS());
 
             MapForm mf = new RestaurantMenu.MapForm();
             Application.Run(mf);

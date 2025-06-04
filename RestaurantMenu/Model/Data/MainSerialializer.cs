@@ -24,21 +24,26 @@ namespace Model.Data
         }
         public static Menu LoadMenu(int id_menu, string nameV)
         {
+
             Menu res = null;
 
             var xmlFile = Path.Combine(Serializer.pathFolder, nameV + "_" + id_menu.ToString() + ".xml");
-           // var jsonFile = Path.Combine(Serializer.pathFolder, nameV + "_" + id_menu.ToString() + ".json");
+            var jsonFile = Path.Combine(Serializer.pathFolder, nameV + "_" + id_menu.ToString() + ".json");
             Serializer ser = default(Serializer);
             if (File.Exists(xmlFile))
             {
                 ser = new XMLSerializer();
                 ChangeFormat("xml");
             }
-            else
+            else if(File.Exists(jsonFile))
             {
                 ser = new JsonSerializer();
                 ChangeFormat("json");
 
+            }
+            else
+            {
+                return null;
             }
             res = ser.Deserialize<Menu>(id_menu, nameV);
             return res;
