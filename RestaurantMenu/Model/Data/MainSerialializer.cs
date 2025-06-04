@@ -11,17 +11,6 @@ namespace Model.Data
 {
     public static class MainSerialializer
     {
-        private static string format = "json";
-        public static void ChangeFormat(string Newformat)
-        {
-            if (Newformat == "json")
-            {
-                format = "json";
-            }
-            else{
-                format = "xml";
-            }
-        }
         public static Menu LoadMenu(int id_menu, string nameV)
         {
             Menu res = null;
@@ -32,19 +21,18 @@ namespace Model.Data
             if (File.Exists(xmlFile))
             {
                 ser = new XMLSerializer();
-                ChangeFormat("xml");
+                
             }
             else
             {
                 ser = new JsonSerializer();
-                ChangeFormat("json");
-
+                
             }
             res = ser.Deserialize<Menu>(id_menu, nameV);
             return res;
         }
 
-        public static void SaveMenu(Menu menu_to_save)
+        public static void SaveMenu(Menu menu_to_save, string format)
         {
             Serializer ser = default(Serializer);
             string file_to_del = Path.Combine(Serializer.pathFolder, menu_to_save.NameOfVen + "_" +  menu_to_save.MyId.ToString());

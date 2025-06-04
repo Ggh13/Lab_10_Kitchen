@@ -109,9 +109,7 @@ namespace Model.Data
             public MenuDTO()
             {
 
-
                 
-
 
             }
 
@@ -122,9 +120,7 @@ namespace Model.Data
 
            
 
-
         }
-
 
 
     }

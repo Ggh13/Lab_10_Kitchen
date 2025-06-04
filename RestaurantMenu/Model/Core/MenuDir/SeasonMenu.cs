@@ -9,7 +9,6 @@ namespace Model.Core.MenuDir
     public class SeasonMenu : Menu
     {
 
-
         public SeasonMenu()
         {
 
@@ -23,7 +22,6 @@ namespace Model.Core.MenuDir
         public SeasonMenu(string nameV, int id) : base(nameV) {
 
             my_id = id;
-
         }
     }
 }

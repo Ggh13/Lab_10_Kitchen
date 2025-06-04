@@ -14,7 +14,7 @@ namespace Model.Core.MenuDir
         void AddMeal(Meal meal) ;
         void DeleteMeal(Meal meal) ;
         void SaveMenu();
-        void LoadMenu(int id);
+        void LoadMenu();
 
         Meal[] Meals { get; }
         string Type { get; }
