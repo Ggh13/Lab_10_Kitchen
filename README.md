@@ -32,13 +32,13 @@
 - ✅ 4+ элемента UI (Label, ComboBox, Button, CheckBox, FlowLayoutPanel)
 
 ## Архитектура
-
+```
 RestaurantMenu/
 ├── Model/ (библиотека)
 │ ├── Core/ # Бизнес-логика
 │ └── Data/ # Сериализация
 └── RestaurantMenu/ # WindowsForms приложение, сами формы
-
+```
 
 ## Руководство пользователя
 
