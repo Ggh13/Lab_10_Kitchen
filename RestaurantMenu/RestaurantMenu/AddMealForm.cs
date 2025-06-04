@@ -16,7 +16,10 @@ namespace RestaurantMenu
     public partial class AddMealForm : Form
     {
         Menu menu;
-        public AddMealForm(Menu menu_peredali)
+        private bool closed;
+        public bool Closed => closed;
+        VenueForm venueForm;
+        public AddMealForm(Menu menu_peredali, VenueForm vf)
         {
             InitializeComponent();
 
@@ -26,6 +29,7 @@ namespace RestaurantMenu
             this.MinimizeBox = false;
 
             menu = menu_peredali;
+            venueForm = vf;
 
             InitComboBoxMealType();
             InitializeComponents();
@@ -94,8 +98,9 @@ namespace RestaurantMenu
                     break;
             }
             menu.AddMeal(addedMeal);
-            MainSerialializer.SaveMenu(menu);
+            menu = MainSerialializer.LoadMenu(menu.MyId, menu.NameOfVen);
             this.DialogResult = DialogResult.OK;
+            venueForm.DisplayMeals();
             this.Close();
         }
 

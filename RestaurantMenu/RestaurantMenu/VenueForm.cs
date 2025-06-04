@@ -93,7 +93,7 @@ namespace RestaurantMenu
             }
         }
 
-        private void DisplayMeals()
+        public void DisplayMeals()
         {
 
             flowLayoutPanel.Controls.Clear();
@@ -193,9 +193,10 @@ namespace RestaurantMenu
 
         private void AddMealButton_Click(object sender, EventArgs e)
         {
-            AddMealForm form = new AddMealForm(menu);
+            AddMealForm form = new AddMealForm(menu, this);
             form.Show();
-            menu = MainSerialializer.LoadMenu(menu.MyId, menu.NameOfVen);
+            
+            DisplayMeals();
         }
 
         private void vScrollBarForMeals_Scroll(object sender, ScrollEventArgs e)
@@ -208,6 +209,7 @@ namespace RestaurantMenu
             var button = (Button)sender;
             Meal mealToDelete = (Meal)button.Tag;
             menu.DeleteMeal(mealToDelete);
+            menu = MainSerialializer.LoadMenu(menu.MyId, menu.NameOfVen);
             DisplayMeals();
         }
 
