@@ -1,4 +1,6 @@
 # RestaurantMenu
+<img src="https://github.com/user-attachments/assets/3cb32a82-2222-4a2c-a82d-d0572214b0c0" alt="Alt Text" width="300" height="200">
+
 
 ## Команда
 - Пикель Герман
