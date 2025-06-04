@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.IO;
 
 namespace RestaurantMenu.RestaurantMenu
 {
@@ -18,7 +19,7 @@ namespace RestaurantMenu.RestaurantMenu
         private BackgroundMusicPlayer musicPlayer;
 
         private System.Windows.Forms.Button[] VenueButtons = new System.Windows.Forms.Button[6];
-        private int choosenVen = -1;
+        private int choosenVen = -1;  // айдишник выбранного ресторана
 
         Dictionary<string, int> RestToId = new Dictionary<string, int>
         {
@@ -49,7 +50,7 @@ namespace RestaurantMenu.RestaurantMenu
             for (int i = 0; i < 6; i++)
             {
                 VenueButtons[i].Text = Map.Venues[i].Name;
-                VenueButtons[i].Size = new Size(250, 150);
+                VenueButtons[i].Size = new Size(250, 100);
             }
 
             musicPlayer = new BackgroundMusicPlayer();
@@ -99,10 +100,11 @@ namespace RestaurantMenu.RestaurantMenu
             if (Map.Venues[RestToId[msg]].HaveSeasonMenu)
             {
                 chooseMenu.Items.AddRange(new string[] { "Сезонное", "Классическое" });
-
+                MainPanel.BackgroundImage = Image.FromFile(Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "image", "BACK_OGUZOK.jpg"));
             }
             else
             {
+                MainPanel.BackgroundImage = Image.FromFile(Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "image", "BACK_VIKA.jpg"));
                 chooseMenu.Items.AddRange(new string[] { "Классическое" });
                 AddSeasonMenu.Visible = true;
             }
@@ -233,7 +235,7 @@ namespace RestaurantMenu.RestaurantMenu
         private void AddSeasonMenu_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Сезонное меню успешно добавлено".ToString());
-
+            MainPanel.BackgroundImage = Image.FromFile(Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, "image", "BACK_OGUZOK.jpg"));
             Map.Venues[choosenVen].AddSeasonMenu();
 
             AddSeasonMenu.Visible = false;
@@ -258,5 +260,6 @@ namespace RestaurantMenu.RestaurantMenu
                 this.Top += e.Y - lastPoint.Y;
             }
         }
+
     }
 }
