@@ -62,7 +62,8 @@ namespace RestaurantMenu
         public static string checkGS()
         {
             
-            MainSerialializer.SaveMenu(MainSerialializer.LoadMenu(0, "NAME"), "xml");
+           MainSerialializer.SaveMenu(MainSerialializer.LoadMenu(0, "NAME"), "xml");
+           
             return "allDone";
         }
         public static string JsonSerDesir()

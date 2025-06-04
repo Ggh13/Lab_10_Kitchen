@@ -40,14 +40,11 @@ namespace Model.Data
             {
                 ser = new XMLSerializer();
                 file_to_del = file_to_del + ".json";
-                
-
             }
             else
             {
                 file_to_del = file_to_del + ".xml";
                 ser = new JsonSerializer();
-
             }
             File.Delete(file_to_del);
             ser.Serialize(menu_to_save);

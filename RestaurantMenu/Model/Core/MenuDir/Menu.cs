@@ -29,6 +29,7 @@ namespace Model.Core.MenuDir
         {
 
             _meals = new Meal[0];
+           // MainSerialializer.SaveMenu(this);
 
         }
 
