@@ -26,8 +26,6 @@ namespace Model.Data
             {
                 Directory.CreateDirectory(PathFolder);
             }
- 
-            
             var file_path = Path.Combine(PathFolder, $"{nameV}_{id}.json");
             
             if (!File.Exists(file_path))
@@ -48,13 +46,10 @@ namespace Model.Data
 
                 if (f["Type"].ToString() == "DefaultMenu")
                 {
-
-
                     sm = new DefaultMenu(f["NameOfVen"].ToString(), int.Parse(f["MyId"].ToString()));
                 }
                 else
                 {
-
                     sm = new DefaultMenu(f["NameOfVen"].ToString(), int.Parse(f["MyId"].ToString()));
 
                 }
@@ -70,14 +65,11 @@ namespace Model.Data
                         Meal = new Drink(meal.Name.ToString(), int.Parse(meal.Price.ToString()));
                     }
                     sm.AddMeal(Meal);
-
                 }
-
                     return sm as T;
             }
             catch (JsonException ex)
             {
-                // Логирование ошибки при необходимости
                 Console.WriteLine($"Ошибка десериализации: {ex.Message}");
                 return new string ("pppp") as T;
             }
@@ -97,8 +89,6 @@ namespace Model.Data
 
             var ser = JsonConvert.SerializeObject(data, settings);
             string file_path = "";
-
-            
             
            var menu = (data as Menu);
            file_path = Path.Combine(PathFolder, menu.NameOfVen.ToString() + "_" + menu.MyId.ToString() + ".json");

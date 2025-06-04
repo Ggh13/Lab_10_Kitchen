@@ -13,8 +13,6 @@ namespace Model.Core.Map
      public abstract partial class Venue : IVenue
     {
 
-        //private Menu[]
-
         public Venue(string name, string description)
         {
             _name = name;
@@ -27,7 +25,7 @@ namespace Model.Core.Map
             {
                 haveSeasonMenu = true;
 
-                //_menus[1] = MainSerialializer.LoadMenu(_menus[1].MyId, _menus[1].NameOfVen);
+                
             }
             
         }
