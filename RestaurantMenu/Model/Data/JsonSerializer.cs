@@ -22,7 +22,10 @@ namespace Model.Data
     {
         public override T Deserialize<T>(int id, string nameV)
         {
-
+            if (!Directory.Exists(PathFolder))
+            {
+                Directory.CreateDirectory(PathFolder);
+            }
  
             
             var file_path = Path.Combine(PathFolder, $"{nameV}_{id}.json");
@@ -82,7 +85,10 @@ namespace Model.Data
 
         public override void Serialize<T>(T data)
         {
-
+            if (!Directory.Exists(PathFolder))
+            {
+                Directory.CreateDirectory(PathFolder);
+            }
             var settings = new JsonSerializerSettings
             {
                 TypeNameHandling = TypeNameHandling.Auto,

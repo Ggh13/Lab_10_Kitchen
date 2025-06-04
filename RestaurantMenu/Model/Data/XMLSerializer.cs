@@ -14,6 +14,10 @@ namespace Model.Data
 
         public override T Deserialize<T>(int id, string nameV) 
         {
+            if (!Directory.Exists(PathFolder))
+            {
+                Directory.CreateDirectory(PathFolder);
+            }
             Menu res = null;
             MenuDTO desir;
             var sir = new XmlSerializer(typeof(MenuDTO));
@@ -57,6 +61,10 @@ namespace Model.Data
 
         public override void Serialize<T>(T data)
         {
+            if (!Directory.Exists(PathFolder))
+            {
+                Directory.CreateDirectory(PathFolder);
+            }
             var sir = new XmlSerializer(typeof(MenuDTO));
 
 
