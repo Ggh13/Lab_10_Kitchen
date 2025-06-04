@@ -13,7 +13,7 @@ namespace Model.Data
     {
         public readonly static string pathFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         public string PathFolder { get { return pathFolder; } }
-        public virtual T Deserialize<T>(int id) where T : Menu
+        public virtual T Deserialize<T>(int id, string nameV) where T : Menu
         {
             return default(SeasonMenu) as T;
            // throw default(object);
