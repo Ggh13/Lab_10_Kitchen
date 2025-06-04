@@ -184,19 +184,30 @@ namespace RestaurantMenu
             typeToSave = selectedValue;
         }
 
+        private delegate void ChangeFormatDelegate(string format);
+
         private void SaveButton_Click(object sender, EventArgs e)
         {
             /* 
                Привет антоние, я пришел скушать ватрушку с медом  маслом, еще я любю жевать воск из под сот. Он как жевачка и прям с медом, я рекомендую шефу добавить это людо в апитайзеры, чтобы огузок ходил и разносил критикам, и у них попа слиплась от меда.
             */
-            if (typeToSave == "JSON")
+            ChangeFormatDelegate changeFormat = delegate (string format)
             {
-                MainSerialializer.ChangeFormat("json");
-            }
-            else
-            {
-                MainSerialializer.ChangeFormat("xml");
-            }
+                MainSerialializer.ChangeFormat(format);
+            };
+
+            string format = typeToSave == "JSON" ? "json" : "xml";
+            changeFormat(format);
+
+            //if (typeToSave == "JSON")
+            //{
+            //    MainSerialializer.ChangeFormat("json");
+            //}
+            //else
+            //{
+            //    MainSerialializer.ChangeFormat("xml");
+            //}
+
             MainSerialializer.SaveMenu(menu);
         }
 

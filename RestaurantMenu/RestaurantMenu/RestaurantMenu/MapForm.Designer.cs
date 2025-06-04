@@ -192,6 +192,8 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(550, 53);
             panel2.TabIndex = 0;
+            panel2.MouseDown += panel2_MouseDown;
+            panel2.MouseMove += panel2_MouseMove;
             // 
             // chooseMenu
             // 
