@@ -180,7 +180,6 @@
             flowLayoutPanel.Name = "flowLayoutPanel";
             flowLayoutPanel.Size = new Size(741, 619);
             flowLayoutPanel.TabIndex = 4;
-            flowLayoutPanel.Paint += flowLayoutPanel_Paint;
             // 
             // VenueForm
             // 
