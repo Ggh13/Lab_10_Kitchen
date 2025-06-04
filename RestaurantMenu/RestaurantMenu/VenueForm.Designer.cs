@@ -91,7 +91,6 @@
             header.Name = "header";
             header.Size = new Size(741, 77);
             header.TabIndex = 2;
-            header.Paint += header_Paint;
             // 
             // MealsLabel
             // 
