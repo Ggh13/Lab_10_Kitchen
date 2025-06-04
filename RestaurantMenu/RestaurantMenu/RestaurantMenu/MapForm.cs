@@ -160,8 +160,7 @@ namespace RestaurantMenu.RestaurantMenu
                     ButtonFastFood1.Visible = true;
                     ButtonFastFood2.Visible = true;
                 }
-            }
-            //MessageBox.Show(selectedState);
+            };
         }
 
         private void vizOffAll()
@@ -200,13 +199,13 @@ namespace RestaurantMenu.RestaurantMenu
 
         private void ClassicMenuButton_Click(object sender, EventArgs e)
         {
-            VenueForm venueForm = new VenueForm(Map.Venues[choosenVen].Menus[0].MyId);
+            VenueForm venueForm = new VenueForm(Map.Venues[choosenVen].Menus[0].MyId, Map.Venues[choosenVen].Menus[0].NameOfVen);
             venueForm.Show();
         }
 
         private void SeasonMenuButton_Click(object sender, EventArgs e)
         {
-            VenueForm venueForm = new VenueForm(Map.Venues[choosenVen].Menus[1].MyId);
+            VenueForm venueForm = new VenueForm(Map.Venues[choosenVen].Menus[1].MyId, Map.Venues[choosenVen].Menus[0].NameOfVen);
             venueForm.Show();
         }
 

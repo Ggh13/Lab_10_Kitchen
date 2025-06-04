@@ -1,5 +1,6 @@
 ﻿using Model.Core.MealDir;
 using Model.Core.MenuDir;
+using Model.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,12 +16,13 @@ namespace RestaurantMenu
 {
     public partial class VenueForm : Form
     {
-        private DefaultMenu defaultMenu = new DefaultMenu();
-        public VenueForm(int id)
+        private Menu menu = default(Menu);
+        private string typeToSave = "Json";
+
+        public VenueForm(int id, string venue_name)
         {
-            defaultMenu.AddMeal(new Dessert("Наполеон", 200));
-            defaultMenu.AddMeal(new Salad("Нисуаз", 1100));
-            defaultMenu.AddMeal(new HotDish("Буябес", 700));
+            menu = MainSerialializer.LoadMenu(id, venue_name);
+            //menu = new SeasonMenu("Arcabaene");
             InitializeComponent();
             this.Size = new Size(1000, 800);
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -63,9 +65,9 @@ namespace RestaurantMenu
 
             Meal[] filteredMeals;
             if (selectedType == "Все")
-                filteredMeals = defaultMenu.Meals;
+                filteredMeals = menu.Meals;
             else
-                filteredMeals = defaultMenu.Meals.Where(m => GetMealTypeDisplayName(m.Type) == selectedType).ToArray();
+                filteredMeals = menu.Meals.Where(m => GetMealTypeDisplayName(m.Type) == selectedType).ToArray();
 
             foreach (var meal in filteredMeals)
             {
@@ -96,7 +98,7 @@ namespace RestaurantMenu
 
             flowLayoutPanel.Controls.Clear();
 
-            foreach (var meal in defaultMenu.Meals)
+            foreach (var meal in menu.Meals)
             {
                 var card = CreateMealCard(meal);
                 flowLayoutPanel.Controls.Add(card);
@@ -170,7 +172,8 @@ namespace RestaurantMenu
 
         private void ChooseFileType_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            string selectedValue = ChooseFileType.SelectedItem.ToString();
+            typeToSave = selectedValue;
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
@@ -178,12 +181,21 @@ namespace RestaurantMenu
             /* 
                Привет антоние, я пришел скушать ватрушку с медом  маслом, еще я любю жевать воск из под сот. Он как жевачка и прям с медом, я рекомендую шефу добавить это людо в апитайзеры, чтобы огузок ходил и разносил критикам, и у них попа слиплась от меда.
             */
+            if (typeToSave == "JSON")
+            {
+                MainSerialializer.ChangeFormat("json");
+            }
+            else
+            {
+                MainSerialializer.ChangeFormat("xml");
+            }
         }
 
         private void AddMealButton_Click(object sender, EventArgs e)
         {
-            AddMealForm form = new AddMealForm();
+            AddMealForm form = new AddMealForm(menu);
             form.Show();
+            menu = MainSerialializer.LoadMenu(menu.MyId, menu.NameOfVen);
         }
 
         private void vScrollBarForMeals_Scroll(object sender, ScrollEventArgs e)
@@ -195,7 +207,7 @@ namespace RestaurantMenu
         {
             var button = (Button)sender;
             Meal mealToDelete = (Meal)button.Tag;
-            defaultMenu.DeleteMeal(mealToDelete);
+            menu.DeleteMeal(mealToDelete);
             DisplayMeals();
         }
 
@@ -208,5 +220,6 @@ namespace RestaurantMenu
         {
 
         }
+
     }
 }

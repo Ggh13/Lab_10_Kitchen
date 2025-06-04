@@ -42,6 +42,10 @@ namespace RestaurantMenu
             TypeMeal = new Label();
             label1 = new Label();
             label5 = new Label();
+            panel2 = new Panel();
+            SaveButton = new Button();
+            ChooseFileType = new ComboBox();
+            label6 = new Label();
             panel4.SuspendLayout();
             PanelForDeleteButton.SuspendLayout();
             PanelForMealDesc.SuspendLayout();
@@ -50,6 +54,7 @@ namespace RestaurantMenu
             panel7.SuspendLayout();
             panel1.SuspendLayout();
             textPanel.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel4
@@ -57,7 +62,7 @@ namespace RestaurantMenu
             panel4.BorderStyle = BorderStyle.FixedSingle;
             panel4.Controls.Add(PanelForDeleteButton);
             panel4.Controls.Add(PanelForMealDesc);
-            panel4.Location = new Point(144, 110);
+            panel4.Location = new Point(12, 12);
             panel4.Name = "panel4";
             panel4.Size = new Size(660, 84);
             panel4.TabIndex = 3;
@@ -123,7 +128,7 @@ namespace RestaurantMenu
             panel5.BorderStyle = BorderStyle.FixedSingle;
             panel5.Controls.Add(panel6);
             panel5.Controls.Add(panel7);
-            panel5.Location = new Point(144, 200);
+            panel5.Location = new Point(12, 102);
             panel5.Name = "panel5";
             panel5.Size = new Size(660, 84);
             panel5.TabIndex = 4;
@@ -191,7 +196,7 @@ namespace RestaurantMenu
             panel1.Controls.Add(maskedTextBox1);
             panel1.Controls.Add(textBoxMealName);
             panel1.Controls.Add(textPanel);
-            panel1.Location = new Point(264, 318);
+            panel1.Location = new Point(12, 207);
             panel1.Name = "panel1";
             panel1.Size = new Size(408, 179);
             panel1.TabIndex = 5;
@@ -268,9 +273,47 @@ namespace RestaurantMenu
             label5.TabIndex = 0;
             label5.Text = "Название блюда:";
             // 
+            // panel2
+            // 
+            panel2.Controls.Add(SaveButton);
+            panel2.Controls.Add(ChooseFileType);
+            panel2.Controls.Add(label6);
+            panel2.Location = new Point(17, 403);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(389, 61);
+            panel2.TabIndex = 6;
+            // 
+            // SaveButton
+            // 
+            SaveButton.Location = new Point(340, 11);
+            SaveButton.Name = "SaveButton";
+            SaveButton.Size = new Size(40, 29);
+            SaveButton.TabIndex = 4;
+            SaveButton.Text = "✓";
+            SaveButton.UseVisualStyleBackColor = true;
+            // 
+            // ChooseFileType
+            // 
+            ChooseFileType.FormattingEnabled = true;
+            ChooseFileType.Location = new Point(271, 11);
+            ChooseFileType.Name = "ChooseFileType";
+            ChooseFileType.Size = new Size(63, 28);
+            ChooseFileType.TabIndex = 4;
+            ChooseFileType.SelectedIndexChanged += ChooseFileType_SelectedIndexChanged;
+            // 
+            // label6
+            // 
+            label6.Font = new Font("Segoe UI", 12F);
+            label6.Location = new Point(3, 7);
+            label6.Name = "label6";
+            label6.Size = new Size(283, 41);
+            label6.TabIndex = 0;
+            label6.Text = "Сохранить меню в формате";
+            // 
             // tmpForm
             // 
             ClientSize = new Size(948, 540);
+            Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(panel4);
             Controls.Add(panel5);
@@ -284,6 +327,7 @@ namespace RestaurantMenu
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             textPanel.ResumeLayout(false);
+            panel2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -309,6 +353,15 @@ namespace RestaurantMenu
         private Label TypeMeal;
         private Label label1;
         private Label label5;
+        private Panel panel2;
+        private Button SaveButton;
+        private ComboBox ChooseFileType;
+        private Label label6;
         private Label label4;
+
+        private void ChooseFileType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
