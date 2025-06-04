@@ -94,6 +94,7 @@ namespace RestaurantMenu
                     break;
             }
             menu.AddMeal(addedMeal);
+            MainSerialializer.SaveMenu(menu);
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -107,14 +108,14 @@ namespace RestaurantMenu
             //comboBoxMealType.SelectedIndex = 0;
         }
 
-        private void AddMealForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void AddButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void AddMealForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
