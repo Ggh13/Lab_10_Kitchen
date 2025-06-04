@@ -27,7 +27,7 @@
 - ✅ 6+ приведений типов (`SeasonMenu` в `T`,  `Drink` в `Meal`, `Salad` в `Meal`, `HotMeal` в `Meal`, `Dessert` в `Meal`, `SeasonMenu` в `Menu`, `DefaultMenu` в `Menu`)
 - ✅ Перегрузка методов (`ToString()` в `Menu`, `ToString()` в `Meal`, `Serialize<T>` в `JsonSerialize`, `Serialize<T>` в `XMLSerialize`)
 - ✅ Перегруженные операторы (`+` для класса `Menu`)
-- ✅ Делегаты (`Func<ITProduct, bool>[]`)
+- ✅ Делегаты (`private delegate void ChangeFormatDelegate(string format);`)
 - ✅ Дженерики (`Serialize<T>` в `JsonSerialize`, `Serialize<T>` в `XMLSerialize`)
 - ✅ 4+ элемента UI (Label, ComboBox, Button, CheckBox, FlowLayoutPanel)
 
