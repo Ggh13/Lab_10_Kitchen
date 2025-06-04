@@ -24,6 +24,10 @@ namespace Model.Data
         }
         public static Menu LoadMenu(int id_menu, string nameV)
         {
+            if (!Directory.Exists(Serializer.pathFolder))
+            {
+                Directory.CreateDirectory(Serializer.pathFolder);
+            }
 
             Menu res = null;
 
@@ -52,7 +56,10 @@ namespace Model.Data
         public static void SaveMenu(Menu menu_to_save, bool just_cre = false)
         {
 
-
+            if (!Directory.Exists(Serializer.pathFolder))
+            {
+                Directory.CreateDirectory(Serializer.pathFolder);
+            }
             var xmlFile = Path.Combine(Serializer.pathFolder, menu_to_save.NameOfVen + "_" + menu_to_save.MyId.ToString() + ".xml");
             var jsonFile = Path.Combine(Serializer.pathFolder, menu_to_save.NameOfVen + "_" + menu_to_save.MyId.ToString() + ".json");
 
