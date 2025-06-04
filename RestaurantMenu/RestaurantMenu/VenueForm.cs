@@ -16,7 +16,7 @@ namespace RestaurantMenu
     public partial class VenueForm : Form
     {
         private DefaultMenu defaultMenu = new DefaultMenu();
-        public VenueForm()
+        public VenueForm(int id)
         {
             defaultMenu.AddMeal(new Dessert("Наполеон", 200));
             defaultMenu.AddMeal(new Salad("Нисуаз", 1100));
@@ -200,6 +200,11 @@ namespace RestaurantMenu
         }
 
         private void ShowMealsButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel_Paint(object sender, PaintEventArgs e)
         {
 
         }

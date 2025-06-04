@@ -8,8 +8,17 @@ namespace Model.Core.MenuDir
 {
     public class DefaultMenu : Menu
     {
-        public DefaultMenu() : base() {
-            id += 1;
+        public DefaultMenu() 
+        {
+
         }
+        public DefaultMenu(string nameV) : base(nameV) {
+            
+        }
+        public DefaultMenu(string nameV, int id) : base(nameV)
+        {
+            my_id = id;
+        }
+
     }
 }

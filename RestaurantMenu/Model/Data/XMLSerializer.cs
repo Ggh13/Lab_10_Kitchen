@@ -9,127 +9,119 @@ using Model.Core.MenuDir;
 
 namespace Model.Data
 {
-    public static class XMLSerializer
+    public class XMLSerializer: Serializer
     {
-        public static void SerializeMenu(Menu menu, string filePath)
+
+        public override T Deserialize<T>(int id, string nameV) 
         {
-            try
+            Menu res = null;
+            MenuDTO desir;
+            var sir = new XmlSerializer(typeof(MenuDTO));
+            using (var reader = new StreamReader(Path.Combine(PathFolder, nameV.ToString() + "_" + id.ToString() + ".xml")))
             {
-                var wrapper = new MenuWrapper(menu);
-                var serializer = new XmlSerializer(typeof(MenuWrapper));
+                desir = (MenuDTO)sir.Deserialize(reader);
+            }
+            if (desir.Type == "DefaultMenu")
+            {
+                res = new DefaultMenu(nameV, id);
+            }
+            else
+            {
+                res = new SeasonMenu(nameV, id);
+            }
 
-                var settings = new XmlWriterSettings
-                {
-                    Indent = true,
-                    IndentChars = "  "
-                };
+            for (int i = 0; i < desir.Meals.Length; i++)
+            {
 
-                using (var writer = XmlWriter.Create(filePath, settings))
+                if (desir.Meals[i].type == "Salad")
                 {
-                    serializer.Serialize(writer, wrapper);
+                    res.AddMeal(new Salad(desir.Meals[i].name, desir.Meals[i].price));
                 }
+                else if(desir.Meals[i].type == "Drink")
+                {
+                    res.AddMeal(new Drink(desir.Meals[i].name, desir.Meals[i].price));
+                }
+                else if (desir.Meals[i].type == "Dessert")
+                {
+                    res.AddMeal(new Dessert(desir.Meals[i].name, desir.Meals[i].price));
+                }
+                else
+                {
+                    res.AddMeal(new HotDish(desir.Meals[i].name, desir.Meals[i].price));
+                }
+                
             }
-            catch (Exception ex)
-            {
-                throw new Exception("Error serializing menu", ex);
-            }
+
+            return res as T;
         }
 
-        public static Menu DeserializeMenu(string filePath)
+        public override void Serialize<T>(T data)
         {
-            try
-            {
-                var serializer = new XmlSerializer(typeof(MenuWrapper));
+            var sir = new XmlSerializer(typeof(MenuDTO));
 
-                using (var reader = XmlReader.Create(filePath))
-                {
-                    var wrapper = (MenuWrapper)serializer.Deserialize(reader);
-                    return wrapper.ToMenu();
-                }
-            }
-            catch (Exception ex)
+
+            MenuDTO mN = new MenuDTO(data as Menu);
+            
+            using (var writer = new StreamWriter(Path.Combine(PathFolder, mN.nameOfVen.ToString() + "_" + mN.Id.ToString() + ".xml")))
             {
-                throw new Exception("Error deserializing menu", ex);
+
+               sir.Serialize(writer, mN);
             }
+            
         }
 
-        [XmlRoot("Menu")]
-        public class MenuWrapper
+        public class DTOMeal
         {
-            [XmlAttribute("Id")]
-            public int Id { get; set; }
+            public string name;
+            public int price;
 
-            [XmlAttribute("Type")]
-            public string Type { get; set; }
-
-            [XmlArray("Meals")]
-            [XmlArrayItem("Meal")]
-            public List<MealWrapper> Meals { get; set; }
-
-            public MenuWrapper() { }
-
-            public MenuWrapper(Menu menu)
+            public string type;
+            public DTOMeal()
             {
-                Id = menu.Id;
+
+            }
+            public DTOMeal(Meal ml)
+            {
+                name = ml.Name;
+                price = ml.Price;
+                type = ml.Type;
+            }
+        }
+        public class MenuDTO
+        {
+
+
+            public string nameOfVen;
+            public int Id;
+            public MenuDTO(Menu menu)
+            {
+
+                Id = menu.MyId;
+                nameOfVen = menu.NameOfVen;
+                Meals = new DTOMeal[menu.Meals.Length];
+                for(int i = 0; i < menu.Meals.Length; i++)
+                {
+                    Meals[i] = new DTOMeal(menu.Meals[i]);
+                }
                 Type = menu.Type;
-                Meals = menu.Meals.Select(m => new MealWrapper(m)).ToList();
             }
 
-            public Menu ToMenu()
+            public MenuDTO()
             {
-                // Здесь нужно создать конкретный экземпляр Menu в зависимости от Type
-                // Это пример, вам нужно адаптировать под вашу реализацию
-                Menu menu = null; // Create appropriate menu instance based on Type
 
-                // Пример (замените на вашу логику создания меню):
-                // if (Type == "SomeConcreteMenuType")
-                //     menu = new SomeConcreteMenuType();
+                
 
-                // Затем добавить блюда
-                if (menu != null)
-                {
-                    var meals = Meals.Select(m => m.ToMeal()).ToArray();
-                    var field = typeof(Menu).GetField("_meals",
-                        System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                    field?.SetValue(menu, meals);
-                }
-
-                return menu;
             }
+
+
+            public DTOMeal[] Meals;
+
+            public string Type;
+
+           
+
         }
 
-        public class MealWrapper
-        {
-            [XmlAttribute("Name")]
-            public string Name { get; set; }
 
-            [XmlAttribute("Price")]
-            public int Price { get; set; }
-
-            [XmlAttribute("Type")]
-            public string Type { get; set; }
-
-            public MealWrapper() { }
-
-            public MealWrapper(Meal meal)
-            {
-                Name = meal.Name;
-                Price = meal.Price;
-                Type = meal.Type;
-            }
-
-            public Meal ToMeal()
-            {
-                // Здесь нужно создать конкретный экземпляр Meal в зависимости от Type
-                // Это пример, вам нужно адаптировать под вашу реализацию
-                Meal meal = null; // Create appropriate meal instance based on Type
-
-                // Пример (замените на вашу логику создания блюда):
-                // if (Type == "SomeConcreteMealType")
-                //     meal = new SomeConcreteMealType(Name, Price);
-
-                return meal;
-            }
-        }
     }
 }

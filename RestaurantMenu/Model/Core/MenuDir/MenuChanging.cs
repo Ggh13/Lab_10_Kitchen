@@ -29,7 +29,7 @@ namespace Model.Core.MenuDir
         public void AddMeal(Meal meal)
         {
 
-            Menu tempM = new DefaultMenu();
+            Menu tempM = new DefaultMenu(this.nameOfVen);
             tempM._meals = new Meal[1] { meal };
             var _ = (this + tempM);
         }

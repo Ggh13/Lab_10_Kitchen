@@ -96,6 +96,7 @@ namespace RestaurantMenu.RestaurantMenu
                 AddSeasonMenu.Visible = true;
             }
         }
+
         private void CloseButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -199,12 +200,14 @@ namespace RestaurantMenu.RestaurantMenu
 
         private void ClassicMenuButton_Click(object sender, EventArgs e)
         {
-            Map.Venues[choosenVen].Menus[0].OpenMenu();
+            VenueForm venueForm = new VenueForm(Map.Venues[choosenVen].Menus[0].MyId);
+            venueForm.Show();
         }
 
         private void SeasonMenuButton_Click(object sender, EventArgs e)
         {
-            Map.Venues[choosenVen].Menus[1].OpenMenu();
+            VenueForm venueForm = new VenueForm(Map.Venues[choosenVen].Menus[1].MyId);
+            venueForm.Show();
         }
 
         private void AddSeasonMenu_Click(object sender, EventArgs e)

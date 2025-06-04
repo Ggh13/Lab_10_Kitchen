@@ -20,16 +20,16 @@ namespace Model.Data
 {
     public class JsonSerializer: Serializer
     {
-        public override T Deserialize<T>(int id)
+        public override T Deserialize<T>(int id, string nameV)
         {
 
  
             
-            var file_path = Path.Combine(PathFolder, $"{id}.json");
-
+            var file_path = Path.Combine(PathFolder, $"{nameV}_{id}.json");
+            
             if (!File.Exists(file_path))
                 return new SeasonMenu() as T;
-
+            
             try
             {
                 string jsonContent = File.ReadAllText(file_path);
@@ -38,13 +38,39 @@ namespace Model.Data
                     TypeNameHandling = TypeNameHandling.Auto // Для корректной работы с абстрактным классом
                 };
 
-                SeasonMenu sm = (SeasonMenu)JsonConvert.DeserializeObject<SeasonMenu>(jsonContent, settings);
+                Menu sm = default( Menu );
+
                 
-                if (sm == null)
-                {   
-                    return new SeasonMenu() as T;
+                var f =  JsonConvert.DeserializeObject<dynamic>(jsonContent, settings);
+
+                if (f["Type"].ToString() == "DefaultMenu")
+                {
+
+
+                    sm = new DefaultMenu(f["NameOfVen"].ToString(), int.Parse(f["MyId"].ToString()));
                 }
-                return sm as T;
+                else
+                {
+
+                    sm = new DefaultMenu(f["NameOfVen"].ToString(), int.Parse(f["MyId"].ToString()));
+
+                }
+                foreach (var meal in f.Meals)
+                {
+                    var Meal = default(Meal);
+                    if (meal.Type.ToString() == "Salad")
+                    {
+                        Meal = new Salad(meal.Name.ToString(), int.Parse(meal.Price.ToString()));
+                    }
+                    else
+                    {
+                        Meal = new Drink(meal.Name.ToString(), int.Parse(meal.Price.ToString()));
+                    }
+                    sm.AddMeal(Meal);
+
+                }
+
+                    return sm as T;
             }
             catch (JsonException ex)
             {
@@ -54,7 +80,7 @@ namespace Model.Data
             }
         }
 
-        public void Serialize<T>(T data)
+        public override void Serialize<T>(T data)
         {
 
             var settings = new JsonSerializerSettings
@@ -67,22 +93,13 @@ namespace Model.Data
             string file_path = "";
 
             
-            if (data is Menu)
-            {
-                var menu = data as Menu;
-                file_path = Path.Combine(PathFolder, menu.Id.ToString() + ".json");
-            }
+            
+           var menu = data as Menu;
+           file_path = Path.Combine(PathFolder, menu.NameOfVen.ToString() + "_" + menu.MyId.ToString() + ".json");
+            
             
             File.WriteAllText(file_path, ser);
         }
 
-    }
-    public class Test
-    {
-        public Test()
-        {
-
-        }
-        public string name = " ";
     }
 }
