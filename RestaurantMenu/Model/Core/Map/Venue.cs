@@ -20,7 +20,7 @@ namespace Model.Core.Map
             _name = name;
             _description = description;
             _menus = new Menu[1];
-            _menus[0] = new DefaultMenu();
+            _menus[0] = new DefaultMenu(name);
             
         }
 
@@ -35,7 +35,7 @@ namespace Model.Core.Map
                 Menu[] updatedMeals = new Menu[_menus.Length + 1];
 
                 Array.Copy(_menus, updatedMeals, _menus.Length);
-                updatedMeals[_menus.Length] = new SeasonMenu();
+                updatedMeals[_menus.Length] = new SeasonMenu(Name);
 
                 _menus = updatedMeals;
             }

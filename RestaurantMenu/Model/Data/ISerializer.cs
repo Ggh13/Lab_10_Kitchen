@@ -12,6 +12,7 @@ namespace Model.Data
        
        public void Serialize<T>(T data);
 
-        public T Deserialize<T>(int id) where T : Menu;
+        public T Deserialize<T>(int id, string nameV) where T : Menu;
+       
     }
 }

@@ -8,8 +8,22 @@ namespace Model.Core.MenuDir
 {
     public class SeasonMenu : Menu
     {
-        public SeasonMenu() : base() {
-            this.SaveMenu();
+
+
+        public SeasonMenu()
+        {
+
+    
+        }
+        public SeasonMenu(string nameV) : base(nameV)
+        {
+
+      
+        }
+        public SeasonMenu(string nameV, int id) : base(nameV) {
+
+            my_id = id;
+
         }
     }
 }

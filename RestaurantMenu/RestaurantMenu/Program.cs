@@ -44,18 +44,26 @@ namespace RestaurantMenu
             var FF2 = new Model.Core.Map.FastFood("The Krusty Krab", "There are many krab`s burgers");
             Model.Core.Map.Map.AddVenue(FF2);
 
-            //MessageBox.Show(xml());
+
+
 
             MapForm mf = new RestaurantMenu.MapForm();
             Application.Run(mf);
         }
 
+
+        public static string checkGS()
+        {
+            
+            MainSerialializer.SaveMenu(MainSerialializer.LoadMenu(0, "NAME"), "xml");
+            return "allDone";
+        }
         public static string JsonSerDesir()
         {
             Serializer sir = new JsonSerializer();
 
 
-            SeasonMenu menu = new SeasonMenu();
+            SeasonMenu menu = new SeasonMenu("GGG");
 
             Meal meal1 = new Salad("buabes", 100);
             Console.WriteLine("!!!!!22------");
@@ -64,31 +72,37 @@ namespace RestaurantMenu
             sir.Serialize(menu);
 
 
-            var ans = sir.Deserialize<Model.Core.MenuDir.Menu>(1);
+            var ans = sir.Deserialize<Model.Core.MenuDir.Menu>(menu.MyId, menu.NameOfVen);
+
             if(ans == null)
             {
                 return "?";
             }
+            ans.AddMeal(meal1);
+            ans.AddMeal(meal1);
             sir.Serialize(ans);
-            return "allDone";
+            return ans.NameOfVen;
         }
 
         public static string xml()
         {
-            SeasonMenu menu = new SeasonMenu();
+
+            DefaultMenu menu = new DefaultMenu("NAME");
 
             Meal meal1 = new Salad("buabes", 100);
             Console.WriteLine("!!!!!22------");
             menu.AddMeal(meal1);
+           
+            
+            Serializer serializer = new XMLSerializer();
 
-            XMLSerializer.SerializeMenu(menu, Path.Combine(Serializer.pathFolder, menu.Id.ToString() + ".xml"));
-            var men = (Model.Core.MenuDir.Menu)XMLSerializer.DeserializeMenu(Path.Combine(Serializer.pathFolder, menu.Id.ToString() + ".xml"));
-            men.AddMeal(meal1);
-            menu.AddMeal(meal1);
-            menu.AddMeal(meal1);
-            XMLSerializer.SerializeMenu(menu, Path.Combine(Serializer.pathFolder, menu.Id.ToString() + ".xml"));
+            serializer.Serialize(menu);
+
+            var d = serializer.Deserialize<Model.Core.MenuDir.Menu>(menu.MyId, menu.NameOfVen);
+            serializer.Serialize(d);
 
             return "All Done";
+            
 
         }
     }
